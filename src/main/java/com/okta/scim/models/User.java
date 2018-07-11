@@ -43,7 +43,7 @@ public class User extends BaseModel {
      * The active status of the user
      * Default: False
      */
-    @Column(columnDefinition="boolean default false")
+    @Column(columnDefinition = "boolean default false")
     public Boolean active = false;
 
     /**

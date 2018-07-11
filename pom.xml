@@ -38,6 +38,10 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
         <!--If using Heroku postgresql db-->
         <!--<dependency>-->
             <!--<groupId>org.postgresql</groupId>-->

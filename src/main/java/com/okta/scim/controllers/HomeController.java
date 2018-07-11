@@ -16,8 +16,10 @@
 package com.okta.scim.controllers;
 
 import com.okta.scim.database.GroupDatabase;
+import com.okta.scim.database.RequestDatabase;
 import com.okta.scim.database.UserDatabase;
 import com.okta.scim.models.Group;
+import com.okta.scim.models.Request;
 import com.okta.scim.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,14 +35,15 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class HomeController {
-
     private UserDatabase uDb;
     private GroupDatabase gDp;
+    private RequestDatabase rDp;
 
     @Autowired
-    public HomeController(UserDatabase uDb, GroupDatabase gDb) {
+    public HomeController(UserDatabase uDb, GroupDatabase gDb, RequestDatabase rDp) {
         this.uDb = uDb;
         this.gDp = gDb;
+        this.rDp = rDp;
     }
 
     /**
@@ -52,9 +55,11 @@ public class HomeController {
     public String home(ModelMap model) {
         List<User> users = uDb.findAll();
         List<Group> groups = gDp.findAll();
+        List<Request> requests = rDp.findAll();
         users.stream().filter(user -> !user.active).forEach(users::remove);
         model.addAttribute("users", users);
         model.addAttribute("groups", groups);
+        model.addAttribute("requests", requests);
         return "home";
     }
 }

@@ -35,7 +35,6 @@ import java.util.regex.Pattern;
 /**
  * URl route example.com/scim/v2/Users
  */
-
 @Controller
 @RequestMapping("/scim/v2/Users")
 public class UsersController {
