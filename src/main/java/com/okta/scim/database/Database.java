@@ -15,38 +15,24 @@
 
 package com.okta.scim.database;
 
-import com.okta.scim.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Page;
-
-import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Base interface for all {@link Database} implementations
+ * @param <T> The model to use for the database
+ */
 @Repository
-public interface Database extends JpaRepository<User, Long> {
-    List<User> findById(String id);
-
-    // Query by username
-    @Query("SELECT u FROM User u WHERE u.userName = :name")
-    Page<User> findByUsername(@Param("name") String name, Pageable pagable);
-
-    // Query by active
-    @Query("SELECT u FROM User u WHERE u.active = :value")
-    Page<User> findByActive(@Param("value") Boolean value, Pageable pagable);
-
-    // Query by familyName
-    @Query("SELECT u FROM User u WHERE u.familyName = :name")
-    Page<User> findByFamilyName(@Param("name") String name, Pageable pagable);
-
-    // Query by givenName
-    @Query("SELECT u FROM User u WHERE u.givenName = :name")
-    Page<User> findByGivenName(@Param("name") String name, Pageable pagable);
-
+public interface Database<T> extends JpaRepository<T, Long> {
+    /**
+     * Gets a single resource from the database, matching the given ID
+     * @param id The ID to search for
+     * @return The instance of {@link T} found
+     */
+    List<T> findById(String id);
 }
 
 @EnableJpaRepositories

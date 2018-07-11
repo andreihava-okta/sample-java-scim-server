@@ -16,22 +16,15 @@
 package com.okta.scim.controllers;
 
 import com.okta.scim.database.Database;
+import com.okta.scim.database.UserDatabase;
 import com.okta.scim.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Field;
-import java.util.Map;
-import java.util.List;
-import java.util.Optional;
-import java.util.HashMap;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * URL route example.com/scim/v2/Users/{id}
@@ -40,10 +33,10 @@ import java.util.ArrayList;
 @Controller
 @RequestMapping("/scim/v2/Users/{id}")
 public class SingleUserController {
-    Database db;
+    UserDatabase db;
 
     @Autowired
-    public SingleUserController(Database db) {
+    public SingleUserController(UserDatabase db) {
         this.db = db;
     }
 

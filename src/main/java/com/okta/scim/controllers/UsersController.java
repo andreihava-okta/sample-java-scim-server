@@ -15,9 +15,9 @@
 
 package com.okta.scim.controllers;
 
-import com.okta.scim.utils.ListResponse;
-import com.okta.scim.database.Database;
+import com.okta.scim.database.UserDatabase;
 import com.okta.scim.models.User;
+import com.okta.scim.utils.ListResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,10 +39,10 @@ import java.util.regex.Pattern;
 @Controller
 @RequestMapping("/scim/v2/Users")
 public class UsersController {
-    Database db;
+    UserDatabase db;
 
     @Autowired
-    public UsersController(Database db) {
+    public UsersController(UserDatabase db) {
       this.db = db;
     }
 
