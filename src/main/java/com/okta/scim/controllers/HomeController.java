@@ -15,7 +15,9 @@
 
 package com.okta.scim.controllers;
 
-import com.okta.scim.database.Database;
+import com.okta.scim.database.GroupDatabase;
+import com.okta.scim.database.UserDatabase;
+import com.okta.scim.models.Group;
 import com.okta.scim.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,24 +34,27 @@ import java.util.List;
 @RequestMapping("/")
 public class HomeController {
 
-    private Database db;
+    private UserDatabase uDb;
+    private GroupDatabase gDp;
 
     @Autowired
-    public HomeController(Database db) {
-        this.db = db;
+    public HomeController(UserDatabase uDb, GroupDatabase gDb) {
+        this.uDb = uDb;
+        this.gDp = gDb;
     }
 
     /**
-     * Outputs active users to web view
-     *
+     * Outputs all active users and groups to web view
      * @param model UI Model
      * @return HTML page to render by name
      */
     @RequestMapping(method = RequestMethod.GET)
     public String home(ModelMap model) {
-        List<User> users = db.findAll();
+        List<User> users = uDb.findAll();
+        List<Group> groups = gDp.findAll();
         users.stream().filter(user -> !user.active).forEach(users::remove);
         model.addAttribute("users", users);
+        model.addAttribute("groups", groups);
         return "home";
     }
 }

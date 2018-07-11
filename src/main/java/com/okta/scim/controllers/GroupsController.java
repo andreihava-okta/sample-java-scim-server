@@ -15,8 +15,8 @@
 
 package com.okta.scim.controllers;
 
+import com.okta.scim.database.GroupDatabase;
 import com.okta.scim.utils.ListResponse;
-import com.okta.scim.database.Database;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,10 +33,10 @@ import java.util.Map;
 @Controller
 @RequestMapping("/scim/v2/Groups")
 public class GroupsController {
-    Database db;
+    GroupDatabase db;
 
     @Autowired
-    public GroupsController(Database db) {
+    public GroupsController(GroupDatabase db) {
         this.db = db;
     }
     /**

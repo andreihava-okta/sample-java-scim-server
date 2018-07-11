@@ -32,6 +32,14 @@ import java.util.List;
 @Table(name = "users")
 public class User extends BaseModel {
     /**
+     * The unique identifier of the user
+     * UUID4 following the RFC 7643 requirement
+     */
+    @Column(length = 36)
+    @Id
+    public String id;
+
+    /**
      * The active status of the user
      * Default: False
      */

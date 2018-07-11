@@ -15,7 +15,6 @@
 
 package com.okta.scim.controllers;
 
-import com.okta.scim.database.Database;
 import com.okta.scim.database.UserDatabase;
 import com.okta.scim.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
