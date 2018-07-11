@@ -2,44 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d43d731-02c3-445c-8615-d11924f61190" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/database/UserDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/allclasses-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/allclasses-noframe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/Application.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/Database.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/GroupsController.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/HomeController.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/ListResponse.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/SingleUserController.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/User.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/UsersController.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/package-frame.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/constant-values.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/deprecated-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/help-doc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index-files/index-9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/overview-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/package-list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/stylesheet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/database/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/BaseModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,11 +16,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UsersController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+            <state relative-caret-position="547">
+              <caret line="118" column="15" lean-forward="true" selection-start-line="118" selection-start-column="15" selection-end-line="118" selection-end-column="15" />
+              <folding>
+                <element signature="e#1439#1440#0" expanded="true" />
+                <element signature="e#1476#1477#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,6 +35,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -94,11 +64,13 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
         <option value="$PROJECT_DIR$/LICENSE.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/utils/ListResponse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/database/UserDatabase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/database/Database.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleUserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/BaseModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Group.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java" />
       </list>
     </option>
   </component>
@@ -298,12 +270,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1531288221917</updated>
-      <workItem from="1531288223657" duration="2197000" />
+      <workItem from="1531288223657" duration="3780000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2197000" />
+    <option name="totallyTimeSpent" value="3780000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -421,13 +393,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/database/UserDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -451,8 +416,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="-694">
           <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/BaseModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+          <folding>
+            <element signature="e#553#554#0" expanded="true" />
+            <element signature="e#590#591#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="118" column="15" lean-forward="true" selection-start-line="118" selection-start-column="15" selection-end-line="118" selection-end-column="15" />
+          <folding>
+            <element signature="e#1439#1440#0" expanded="true" />
+            <element signature="e#1476#1477#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

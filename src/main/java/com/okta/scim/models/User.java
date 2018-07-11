@@ -26,28 +26,44 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Database schema for {@link User} object
+ * Database schema for {@link User}
  */
 @Entity
-@Table(name="users")
-public class User {
-    // Unique ID as a UUID4 following the RFC 7643 requirement
-    @Column(length=36)
-    @Id
-    public String id;
-
+@Table(name = "users")
+public class User extends BaseModel {
+    /**
+     * The active status of the user
+     * Default: False
+     */
     @Column(columnDefinition="boolean default false")
     public Boolean active = false;
 
+    /**
+     * The username of the user
+     * Non-nullable, unique
+     * Max length: 250
+     */
     @Column(unique=true, nullable=false, length=250)
     public String userName;
 
+    /**
+     * The last name (family name) of the user
+     * Max length: 250
+     */
     @Column(length=250)
     public String familyName;
 
+    /**
+     * The middle name of the user
+     * Max length: 250
+     */
     @Column(length=250)
     public String middleName;
 
+    /**
+     * The first name (given name) of the user
+     * Max length: 250
+     */
     @Column(length=250)
     public String givenName;
 
@@ -100,7 +116,7 @@ public class User {
         returnValue.put("active", this.active);
         returnValue.put("userName", this.userName);
 
-        // Names
+        // Name
         Map<String, Object> names = new HashMap<>();
         names.put("familyName", this.familyName);
         names.put("givenName", this.givenName);
@@ -110,7 +126,7 @@ public class User {
         // Meta information
         Map<String, Object> meta = new HashMap<>();
         meta.put("resourceType", "User");
-        meta.put("meta", ("/scim/v2/Users/" + this.userName));
+        meta.put("meta", ("/scim/v2/Users/" + this.id));
         returnValue.put("meta", meta);
 
         return returnValue;
