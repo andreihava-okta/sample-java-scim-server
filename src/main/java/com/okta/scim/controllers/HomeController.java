@@ -13,38 +13,43 @@
  *  limitations under the License.
  */
 
-package com.okta.scim;
+package com.okta.scim.controllers;
 
+import com.okta.scim.database.Database;
+import com.okta.scim.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Map;
+import java.util.List;
 
 /**
- *  URL route example.com/scim/v2/Groups
+ * Web view URL route "/" to display users
  */
-
-
 @Controller
-@RequestMapping("/scim/v2/Groups")
-public class GroupsController {
-    Database db;
+@RequestMapping("/")
+public class HomeController {
+
+    private Database db;
 
     @Autowired
-    public GroupsController(Database db) {
+    public HomeController(Database db) {
         this.db = db;
     }
+
     /**
-     *  Returns default {@link ListResponse} object
+     * Outputs active users to web view
      *
-     *  @return JSON {@link Map} {@link ListResponse}
+     * @param model UI Model
+     * @return HTML page to render by name
      */
     @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody Map groupsGet() {
-        ListResponse groups = new ListResponse();
-        return groups.toScimResource();
+    public String home(ModelMap model) {
+        List<User> users = db.findAll();
+        users.stream().filter(user -> !user.active).forEach(users::remove);
+        model.addAttribute("users", users);
+        return "home";
     }
 }

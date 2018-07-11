@@ -13,7 +13,9 @@
  *  limitations under the License.
  */
 
-package com.okta.scim;
+package com.okta.scim.utils;
+
+import com.okta.scim.models.User;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -31,13 +33,13 @@ public class ListResponse {
     private int count;
     private int totalResults;
 
-    ListResponse(){
+    public ListResponse(){
         this.list = new ArrayList<>();
         this.startIndex = 1;
         this.count = 0;
         this.totalResults = 0;
     }
-    ListResponse(List<User> list, Optional<Integer> startIndex,
+    public ListResponse(List<User> list, Optional<Integer> startIndex,
                  Optional<Integer> count, Optional<Integer> totalResults){
         this.list = list;
 
@@ -50,7 +52,7 @@ public class ListResponse {
     /**
      * @return JSON {@link Map} of {@link ListResponse} object
      */
-    Map<String, Object> toScimResource(){
+    public Map<String, Object> toScimResource(){
         Map<String, Object> returnValue = new HashMap<>();
 
         List<String> schemas = new ArrayList<>();

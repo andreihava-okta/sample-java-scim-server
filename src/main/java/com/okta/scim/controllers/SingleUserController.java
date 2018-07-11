@@ -13,8 +13,10 @@
  *  limitations under the License.
  */
 
-package com.okta.scim;
+package com.okta.scim.controllers;
 
+import com.okta.scim.database.Database;
+import com.okta.scim.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

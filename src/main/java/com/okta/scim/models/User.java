@@ -13,7 +13,7 @@
  *  limitations under the License.
  */
 
-package com.okta.scim;
+package com.okta.scim.models;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -51,9 +51,9 @@ public class User {
     @Column(length=250)
     public String givenName;
 
-    User() {}
+    public User() {}
 
-    User(Map<String, Object> resource){
+    public User(Map<String, Object> resource){
         this.update(resource);
     }
 
@@ -61,7 +61,7 @@ public class User {
      * Updates {@link User} object from JSON {@link Map}
      * @param resource JSON {@link Map} of {@link User}
      */
-    void update(Map<String, Object> resource) {
+    public void update(Map<String, Object> resource) {
         try{
             Map<String, Object> names = (Map<String, Object>)resource.get("name");
             for(String subName : names.keySet()){
@@ -91,7 +91,7 @@ public class User {
      *
      * @return JSON {@link Map} of {@link User}
      */
-    Map toScimResource(){
+    public Map toScimResource(){
         Map<String, Object> returnValue = new HashMap<>();
         List<String> schemas = new ArrayList<>();
         schemas.add("urn:ietf:params:scim:schemas:core:2.0:User");

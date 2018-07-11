@@ -13,8 +13,9 @@
  *  limitations under the License.
  */
 
-package com.okta.scim;
+package com.okta.scim.database;
 
+import com.okta.scim.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
