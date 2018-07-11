@@ -18,7 +18,15 @@ package com.okta.scim.utils;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+/**
+ * Utility class for {@link String} operations
+ */
 public class StringUtil {
+    /**
+     * Converts a {@link BufferedReader} to a {@link String}
+     * @param reader The {@link BufferedReader} to convert
+     * @return The contents of the reader
+     */
     public static String readerToString(BufferedReader reader) {
         StringBuilder sb = new StringBuilder();
 

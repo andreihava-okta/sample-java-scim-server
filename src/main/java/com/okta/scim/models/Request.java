@@ -74,7 +74,7 @@ public class Request extends BaseModel {
      * The body of the request
      * Max length: 250
      */
-    @Column(length = 250)
+    @Column(length = 1000)
     public String body;
 
     public Request() {}

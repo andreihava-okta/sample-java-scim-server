@@ -21,24 +21,32 @@ import com.okta.scim.interceptors.LoggingInterceptor;
 import com.okta.scim.models.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
+import org.springframework.http.HttpInputMessage;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.UUID;
 
+/**
+ * Controller advice for all responses for logging purposes
+ */
 @ControllerAdvice
-public class LoggingAdvice implements ResponseBodyAdvice<HashMap> {
+public class LoggingResponseAdvice implements ResponseBodyAdvice<HashMap> {
     RequestDatabase db;
 
     @Autowired
-    public LoggingAdvice(RequestDatabase db) {
+    public LoggingResponseAdvice(RequestDatabase db) {
         this.db = db;
     }
 
@@ -49,13 +57,11 @@ public class LoggingAdvice implements ResponseBodyAdvice<HashMap> {
 
     @Override
     public HashMap beforeBodyWrite(HashMap body, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest request, ServerHttpResponse response) {
-        Request req = new Request();
-        req.id = UUID.randomUUID().toString();
-        req.timeStamp = LocalDateTime.now(Clock.systemUTC()).toString().substring(0, 23) + "Z";
+        ServletServerHttpRequest parsed = (ServletServerHttpRequest)request;
+        Request req = LoggingInterceptor.requests.get(parsed.getServletRequest().getAttribute("requestId"));
+
         req.response = true;
         req.body = new Gson().toJson(body);
-
-        LoggingInterceptor.requests.add(req);
 
         return body;
     }

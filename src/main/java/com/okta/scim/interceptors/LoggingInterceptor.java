@@ -17,24 +17,24 @@ package com.okta.scim.interceptors;
 
 import com.okta.scim.database.RequestDatabase;
 import com.okta.scim.models.Request;
-import com.okta.scim.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.time.Clock;
 import java.time.LocalDateTime;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.SynchronousQueue;
 
+/**
+ * Interceptor for all requests for logging purposes
+ */
 @Component
 public class LoggingInterceptor implements HandlerInterceptor {
-    public static Queue<Request> requests = new LinkedList<>();
+    public static Map<String, Request> requests = new HashMap<>();
 
     RequestDatabase db;
 
@@ -47,20 +47,17 @@ public class LoggingInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         if (request.getRequestURI().startsWith("/scim/v2/")) {
             Request req = new Request();
+
             req.id = UUID.randomUUID().toString();
             req.timeStamp = LocalDateTime.now(Clock.systemUTC()).toString().substring(0, 23) + "Z";
             req.method = request.getMethod();
             req.endpoint = request.getRequestURI();
 
-            if (!req.method.equals("GET")) {
-                try {
-                    req.body = StringUtil.readerToString(request.getReader());
-                } catch (IOException e) {
-                    System.out.println(e);
-                }
-            }
+            request.setAttribute("requestId", req.id);
 
-            db.save(req);
+            requests.put(req.id, req);
+
+            System.out.println("preHandle req created");
         }
 
         return true;
@@ -69,12 +66,14 @@ public class LoggingInterceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
         try {
-            Request req = requests.remove();
-            req.method = request.getMethod();
-            req.endpoint = request.getRequestURI();
+            Request req = requests.get(request.getAttribute("requestId").toString());
+            requests.remove(request.getAttribute("requestId").toString());
+
             req.httpCode = response.getStatus();
 
             db.save(req);
+
+            System.out.println("afterCompletion req saved");
         } catch(Exception e) {
             // System.out.println(e);
         }
