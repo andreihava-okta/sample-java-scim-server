@@ -26,10 +26,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Map;
 
 /**
- *  URL route example.com/scim/v2/Groups
+ *  URL route (root)/scim/v2/Groups
  */
-
-
 @Controller
 @RequestMapping("/scim/v2/Groups")
 public class GroupsController {
@@ -41,7 +39,6 @@ public class GroupsController {
     }
     /**
      *  Returns default {@link ListResponse} object
-     *
      *  @return JSON {@link Map} {@link ListResponse}
      */
     @RequestMapping(method = RequestMethod.GET)

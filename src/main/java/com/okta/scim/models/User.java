@@ -111,8 +111,7 @@ public class User extends BaseModel {
     }
 
     /**
-     * Formats JSON {@link Map} response with {@link User} attributes.
-     *
+     * Formats JSON {@link Map} response with {@link User} attributes
      * @return JSON {@link Map} of {@link User}
      */
     public Map toScimResource(){

@@ -15,25 +15,21 @@
 
 package com.okta.scim.database;
 
-import com.okta.scim.models.Request;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.okta.scim.models.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
- * Interface for the {@link Request} database
+ * Interface for the {@link Transaction} database
  */
 @Repository
-public interface RequestDatabase extends JpaRepository<Request, Long> {
+public interface TransactionDatabase extends JpaRepository<Transaction, Long> {
     /**
      * Gets a single resource from the database, matching the given ID
      * @param id The ID to search for
-     * @return The instance of {@link Request} found
+     * @return The instance of {@link Transaction} found
      */
-    List<Request> findById(String id);
+    List<Transaction> findById(String id);
 }

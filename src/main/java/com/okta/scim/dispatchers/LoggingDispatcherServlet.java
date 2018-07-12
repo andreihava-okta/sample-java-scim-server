@@ -15,10 +15,9 @@
 
 package com.okta.scim.dispatchers;
 
-import com.okta.scim.database.RequestDatabase;
-import com.okta.scim.models.Request;
+import com.okta.scim.database.TransactionDatabase;
+import com.okta.scim.models.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.HandlerExecutionChain;
 import org.springframework.web.util.ContentCachingRequestWrapper;
@@ -30,9 +29,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+/**
+ * Dispatch Servlet to log all transactions
+ */
 public class LoggingDispatcherServlet extends DispatcherServlet {
     @Autowired
-    RequestDatabase db;
+    TransactionDatabase db;
 
     @Override
     protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -56,8 +58,14 @@ public class LoggingDispatcherServlet extends DispatcherServlet {
         }
     }
 
+    /**
+     * Creates a {@link Transaction} for a transaction and saves it to the {@link TransactionDatabase}
+     * @param requestToCache The transaction {@link HttpServletRequest}
+     * @param responseToCache The transaction {@link HttpServletResponse}
+     * @param handler The transaction {@link HandlerExecutionChain}
+     */
     private void log(HttpServletRequest requestToCache, HttpServletResponse responseToCache, HandlerExecutionChain handler) {
-        Request req = new Request()
+        Transaction req = new Transaction()
                 .generateId()
                 .setTimestamp()
                 .setMethod(requestToCache.getMethod())
@@ -71,6 +79,11 @@ public class LoggingDispatcherServlet extends DispatcherServlet {
         db.save(req);
     }
 
+    /**
+     * Extracts the body from a request
+     * @param request The {@link HttpServletRequest}
+     * @return A {@link String} containing the body, or '[unknown]'
+     */
     @SuppressWarnings("Duplicates")
     private String getRequestPayload(HttpServletRequest request) {
         ContentCachingRequestWrapper wrapper = WebUtils.getNativeRequest(request, ContentCachingRequestWrapper.class);
@@ -92,6 +105,11 @@ public class LoggingDispatcherServlet extends DispatcherServlet {
         return "[unknown]";
     }
 
+    /**
+     * Extracts the body from a response
+     * @param response The {@link HttpServletResponse}
+     * @return A {@link String} containing the body, or '[unknown]'
+     */
     @SuppressWarnings("Duplicates")
     private String getResponsePayload(HttpServletResponse response) {
         ContentCachingResponseWrapper wrapper = WebUtils.getNativeResponse(response, ContentCachingResponseWrapper.class);
@@ -113,6 +131,11 @@ public class LoggingDispatcherServlet extends DispatcherServlet {
         return "[unknown]";
     }
 
+    /**
+     * Updates the response, copying the contents back
+     * @param response The {@link HttpServletResponse}
+     * @throws IOException
+     */
     private void updateResponse(HttpServletResponse response) throws IOException {
         ContentCachingResponseWrapper wrapper = WebUtils.getNativeResponse(response, ContentCachingResponseWrapper.class);
         wrapper.copyBodyToResponse();

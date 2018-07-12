@@ -26,9 +26,8 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 /**
- * URL route example.com/scim/v2/Users/{id}
+ *  URL route (root)/scim/v2/Users/{id}
  */
-
 @Controller
 @RequestMapping("/scim/v2/Users/{id}")
 public class SingleUserController {
@@ -42,11 +41,9 @@ public class SingleUserController {
     /**
      * Queries database for {@link User} with identifier
      * Updates response code with '404' if unable to locate {@link User}
-     *
      * @param id {@link User#id}
      * @param response HTTP Response
      * @return {@link #scimError(String, Optional)} / JSON {@link Map} of {@link User}
-     *
      */
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody Map singeUserGet(@PathVariable String id,  HttpServletResponse response) {
@@ -63,7 +60,6 @@ public class SingleUserController {
 
     /**
      * Update via Put {@link User} attributes
-     *
      * @param payload Payload from HTTP request
      * @param id {@link User#id}
      * @return JSON {@link Map} of {@link User}
@@ -78,10 +74,8 @@ public class SingleUserController {
 
     /**
      * Update via Patch {@link User} attributes
-     *
      * @param payload Payload from HTTP request
      * @param id {@link User#id}
-     *
      * @return {@link #scimError(String, Optional)} / JSON {@link Map} of {@link User}
      */
     @RequestMapping(method = RequestMethod.PATCH)
@@ -129,7 +123,6 @@ public class SingleUserController {
 
     /**
      * Output custom error message with response code
-     *
      * @param message Scim error message
      * @param status_code Response status code
      * @return JSON {@link Map} of {@link User}

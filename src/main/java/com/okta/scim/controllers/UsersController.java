@@ -33,7 +33,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * URl route example.com/scim/v2/Users
+ *  URL route (root)/scim/v2/Users
  */
 @Controller
 @RequestMapping("/scim/v2/Users")
@@ -47,7 +47,6 @@ public class UsersController {
 
     /**
      * Support pagination and filtering by username
-     *
      * @param params Payload from HTTP request
      * @return JSON {@link Map} {@link ListResponse}
      */
@@ -111,7 +110,6 @@ public class UsersController {
 
     /**
      * Creates new {@link User} with given attributes
-     *
      * @param params JSON {@link Map} of {@link User} attributes
      * @param response HTTP response
      * @return JSON {@link Map} of {@link User}

@@ -21,46 +21,62 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.Clock;
 import java.time.LocalDateTime;
-import java.util.Map;
 import java.util.UUID;
 
 /**
- * Database schema for {@link Request}
+ * Database schema for {@link Transaction}
  */
 @Entity
-@Table(name = "requests")
-public class Request extends BaseModel {
+@Table(name = "transactions")
+public class Transaction extends BaseModel {
     /**
-     * The unique identifier of the user
-     * UUID4 following the RFC 7643 requirement
+     * The unique identifier of the transaction
      */
     @Column(length = 36)
     @Id
     public String id;
 
-    public Request setId(String id) {
+    /**
+     * Sets the {@link Transaction} ID
+     * @param id The ID
+     * @return The {@link Transaction} instance
+     */
+    public Transaction setId(String id) {
         this.id = id;
         return this;
     }
 
-    public Request generateId() {
+    /**
+     * Generate a new UUID for the transaction
+     * @return The {@link Transaction} instance
+     */
+    public Transaction generateId() {
         this.id = UUID.randomUUID().toString();
         return this;
     }
 
     /**
-     * The timestamp of the request, in UTC
+     * The timestamp of the transaction, in UTC
      * Non-nullable
      */
     @Column(nullable = false)
     public String timeStamp;
 
-    public Request setTimestamp() {
+    /**
+     * Sets the timestamp of the transaction to the current date-time, UTC
+     * @return The {@link Transaction} instance
+     */
+    public Transaction setTimestamp() {
         this.timeStamp = LocalDateTime.now(Clock.systemUTC()).toString().substring(0, 23) + "Z";
         return this;
     }
 
-    public Request setTimestamp(String timeStamp) {
+    /**
+     * Set the timestamp of the transaction
+     * @param timeStamp The timestamp
+     * @return The {@link Transaction} instance
+     */
+    public Transaction setTimestamp(String timeStamp) {
         this.timeStamp = timeStamp;
         return this;
     }
@@ -72,7 +88,12 @@ public class Request extends BaseModel {
     @Column
     public int httpCode = 200;
 
-    public Request setHttpCode(int httpCode) {
+    /**
+     * Set the HTTP Status Code of the response
+     * @param httpCode The status code
+     * @return The {@link Transaction} instance
+     */
+    public Transaction setHttpCode(int httpCode) {
         this.httpCode = httpCode;
         return this;
     }
@@ -84,7 +105,12 @@ public class Request extends BaseModel {
     @Column(length = 20)
     public String method;
 
-    public Request setMethod(String method) {
+    /**
+     * Set the request method
+     * @param method The method
+     * @return The {@link Transaction} instance
+     */
+    public Transaction setMethod(String method) {
         this.method = method;
         return this;
     }
@@ -96,7 +122,12 @@ public class Request extends BaseModel {
     @Column(length = 250)
     public String endpoint;
 
-    public Request setEndpoint(String endpoint) {
+    /**
+     * Set the endpoint of the request
+     * @param endpoint The endpoint
+     * @return The {@link Transaction} instance
+     */
+    public Transaction setEndpoint(String endpoint) {
         this.endpoint = endpoint;
         return this;
     }
@@ -108,7 +139,12 @@ public class Request extends BaseModel {
     @Column(length = 1000)
     public String requestBody;
 
-    public Request setRequestBody(String requestBody) {
+    /**
+     * Set the request body
+     * @param requestBody The request body
+     * @return The {@link Transaction} instance
+     */
+    public Transaction setRequestBody(String requestBody) {
         this.requestBody = requestBody;
         return this;
     }
@@ -120,45 +156,49 @@ public class Request extends BaseModel {
     @Column(length = 1000)
     public String responseBody;
 
-    public Request setResponseBody(String responseBody) {
+    /**
+     * Set the response body
+     * @param responseBody The response body
+     * @return The {@link Transaction} instance
+     */
+    public Transaction setResponseBody(String responseBody) {
         this.responseBody = responseBody;
         return this;
     }
 
+    /**
+     * The client IP
+     * Max length: 30
+     */
     @Column(length = 30)
     public String clientIp;
 
-    public Request setClientIp(String clientIp) {
+    /**
+     * Set the client IP
+     * @param clientIp The client IP
+     * @return The {@link Transaction} instance
+     */
+    public Transaction setClientIp(String clientIp) {
         this.clientIp = clientIp;
         return this;
     }
 
+    /**
+     * The Java method handling the request
+     * Max length: 300
+     */
     @Column(length = 300)
     public String javaMethod;
 
-    public Request setJavaMethod(String javaMethod) {
+    /**
+     * Set the Java method handling the request
+     * @param javaMethod The method
+     * @return The {@link Transaction} instance
+     */
+    public Transaction setJavaMethod(String javaMethod) {
         this.javaMethod = javaMethod;
         return this;
     }
 
-    public Request() {}
-
-    public Request(Map<String, Object> resource) {
-        this.update(resource);
-    }
-
-    /**
-     * Updates {@link Request} object from JSON {@link Map}
-     * @param resource JSON {@link Map} of {@link Request}
-     */
-    public void update(Map<String, Object> resource) {
-//        try {
-//            this.id = resource.get("id").toString();
-//            this.timeStamp = resource.get("timeStamp").toString();
-//            this.method = resource.get("method").toString();
-//            this.endpoint = resource.get("endpoint").toString();
-//        } catch(Exception e) {
-//            System.out.println(e);
-//        }
-    }
+    public Transaction() {}
 }

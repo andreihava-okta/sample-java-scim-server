@@ -16,10 +16,10 @@
 package com.okta.scim.controllers;
 
 import com.okta.scim.database.GroupDatabase;
-import com.okta.scim.database.RequestDatabase;
+import com.okta.scim.database.TransactionDatabase;
 import com.okta.scim.database.UserDatabase;
 import com.okta.scim.models.Group;
-import com.okta.scim.models.Request;
+import com.okta.scim.models.Transaction;
 import com.okta.scim.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,24 +30,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 /**
- * Web view URL route "/" to display users
+ *  URL route (root)/ to display home page
  */
 @Controller
 @RequestMapping("/")
 public class HomeController {
     private UserDatabase uDb;
     private GroupDatabase gDp;
-    private RequestDatabase rDp;
+    private TransactionDatabase tDp;
 
     @Autowired
-    public HomeController(UserDatabase uDb, GroupDatabase gDb, RequestDatabase rDp) {
+    public HomeController(UserDatabase uDb, GroupDatabase gDb, TransactionDatabase tDp) {
         this.uDb = uDb;
         this.gDp = gDb;
-        this.rDp = rDp;
+        this.tDp = tDp;
     }
 
     /**
-     * Outputs all active users and groups to web view
+     * Outputs all active users, groups and transaction logs to web view
      * @param model UI Model
      * @return HTML page to render by name
      */
@@ -55,11 +55,11 @@ public class HomeController {
     public String home(ModelMap model) {
         List<User> users = uDb.findAll();
         List<Group> groups = gDp.findAll();
-        List<Request> requests = rDp.findAll();
+        List<Transaction> transactions = tDp.findAll();
         users.stream().filter(user -> !user.active).forEach(users::remove);
         model.addAttribute("users", users);
         model.addAttribute("groups", groups);
-        model.addAttribute("requests", requests);
+        model.addAttribute("transactions", transactions);
         return "home";
     }
 }

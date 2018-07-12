@@ -1,5 +1,6 @@
 com.okta.scim
 com.okta.scim.controllers
 com.okta.scim.database
+com.okta.scim.dispatchers
 com.okta.scim.models
 com.okta.scim.utils

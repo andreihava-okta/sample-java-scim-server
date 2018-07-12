@@ -64,7 +64,7 @@ on the `id` attribute:
 > non-empty "id" value.  This identifier MUST be unique across the
 > SCIM service provider's entire set of resources.  It MUST be a
 > stable, non-reassignable identifier that does not change when the
-> same resource is returned in subsequent requests.  The value of
+> same resource is returned in subsequent transactions.  The value of
 > the "id" attribute is always issued by the service provider and
 > MUST NOT be specified by the client.  The string "bulkId" is a
 > reserved keyword and MUST NOT be used within any unique identifier
@@ -505,13 +505,13 @@ of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
 ## Rate Limiting
 
 Some customer actions, such as adding hundreds of users at once,
-causes large bursts of HTTP requests to your SCIM API. For
+causes large bursts of HTTP transactions to your SCIM API. For
 scenarios like this, we suggest that your SCIM API return rate
 limiting information to Okta via the [HTTP 429 Too Many Requests](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#429)
 status code. This helps Okta throttle the rate at which SCIM
-requests are made to your API.
+transactions are made to your API.
 
-For more details on rate limiting requests using the HTTP 429
+For more details on rate limiting transactions using the HTTP 429
 status code, see [section 4](https://tools.ietf.org/html/rfc6585#section-4) of [RFC 6585](https://tools.ietf.org/html/rfc6585).
 
 ## SCIM Features Not Implemented by Okta
@@ -554,13 +554,13 @@ The `/Me` URI alias for the current authenticated subject is
 covered in
 [section 3.11](https://tools.ietf.org/html/rfc7644#section-3.11) of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
 
-Okta does not currently make SCIM requests with the `/Me` URI alias.
+Okta does not currently make SCIM transactions with the `/Me` URI alias.
 
 ### /Groups API endpoint
 
 Okta currently does not support using the `/Groups` endpoint of a SCIM
 API. When support is added for the `/Groups` endpoint, Okta plans
-on using the following HTTP requests against the `/Groups` endpoint:
+on using the following HTTP transactions against the `/Groups` endpoint:
 
 -   Read list of Groups: GET /Groups
 
@@ -615,7 +615,7 @@ Okta does not currently make queries for resources using
 
 Okta plans to add functionality to fetch incremental updates
 from SCIM APIs by querying for resources using a filter expression
-that requests resources which were updated since the last update.
+that transactions resources which were updated since the last update.
 
 This will likely be done using the `gt` filter operator. For
 example:
@@ -718,7 +718,7 @@ This example SCIM server demonstrates how to implement a basic SCIM
 server that can create, read, update, and deactivate Okta users.
 
 The "Required SCIM Capabilities" section has the sample code that
-handles the HTTP requests to this sample application, below we
+handles the HTTP transactions to this sample application, below we
 describe the rest of code used in the example.
 
 ## How to run

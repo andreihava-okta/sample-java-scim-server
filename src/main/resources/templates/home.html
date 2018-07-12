@@ -69,21 +69,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="request : ${requests}">
-                    <!--<td th:text="${request.id}">Request ID</td>-->
-                    <td th:text="${request.timeStamp}">Timestamp</td>
-                    <td th:text="${request.httpCode}">Status</td>
-                    <td th:text="${request.method}">Method</td>
-                    <td th:text="${request.endpoint}">Endpoint</td>
-                    <td th:text="${request.clientIp}">Client IP</td>
-                    <!--<td th:text="${request.javaMethod}">Handler</td>-->
+                <tr th:each="transaction : ${transactions}">
+                    <!--<td th:text="${transaction.id}">Transaction ID</td>-->
+                    <td th:text="${transaction.timeStamp}">Timestamp</td>
+                    <td th:text="${transaction.httpCode}">Status</td>
+                    <td th:text="${transaction.method}">Method</td>
+                    <td th:text="${transaction.endpoint}">Endpoint</td>
+                    <td th:text="${transaction.clientIp}">Client IP</td>
+                    <!--<td th:text="${transaction.javaMethod}">Handler</td>-->
                     <td>
-                        <button th:classappend="${request.javaMethod == null} ? disabled"
-                                type="button" class="btn btn-info" data-toggle="modal" th:attr="data-target=${'#' + request.id} + '-handler'">View Handler</button>
+                        <button th:classappend="${transaction.javaMethod == null} ? disabled"
+                                type="button" class="btn btn-info" data-toggle="modal" th:attr="data-target=${'#' + transaction.id} + '-handler'">View Handler</button>
                     </td>
                     <td>
-                        <button th:classappend="${request.requestBody == '[unknown]' && request.responseBody == '[unknown]'} ? disabled"
-                                type="button" class="btn btn-info" data-toggle="modal" th:attr="data-target=${'#' + request.id}">View Bodies</button>
+                        <button th:classappend="${transaction.requestBody == '[unknown]' && transaction.responseBody == '[unknown]'} ? disabled"
+                                type="button" class="btn btn-info" data-toggle="modal" th:attr="data-target=${'#' + transaction.id}">View Bodies</button>
                     </td>
                 </tr>
                 </tbody>
@@ -92,22 +92,22 @@
     </div>
 </div>
 
-<div th:each="request : ${requests}" th:id="${request.id}" class="modal fade" role="dialog">
+<div th:each="transaction : ${transactions}" th:id="${transaction.id}" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 th:text="${'Transaction ' + request.id + ' bodies'}" class="modal-title"></h4>
+                <h4 th:text="${'Transaction ' + transaction.id + ' bodies'}" class="modal-title"></h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-6">
                         <h5>Request</h5>
-                        <pre class=".body-container" th:text="${request.requestBody}"></pre>
+                        <pre class=".body-container" th:text="${transaction.requestBody}"></pre>
                     </div>
                     <div class="col-sm-6">
                         <h5>Response</h5>
-                        <pre class=".body-container" th:text="${request.responseBody}"></pre>
+                        <pre class=".body-container" th:text="${transaction.responseBody}"></pre>
                     </div>
                 </div>
             </div>
@@ -118,15 +118,15 @@
     </div>
 </div>
 
-<div th:each="request : ${requests}" th:id="${request.id} + '-handler'" class="modal fade" role="dialog">
+<div th:each="transaction : ${transactions}" th:id="${transaction.id} + '-handler'" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 th:text="${'Transaction ' + request.id + ' handler'}" class="modal-title"></h4>
+                <h4 th:text="${'Transaction ' + transaction.id + ' handler'}" class="modal-title"></h4>
             </div>
             <div class="modal-body">
-                <pre class=".body-container" th:text="${request.javaMethod}"></pre>
+                <pre class=".body-container" th:text="${transaction.javaMethod}"></pre>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-alert" data-dismiss="modal">Close</button>
