@@ -54,31 +54,36 @@
             </table>
         </div>
         <div class="col-sm-12">
-            <h2>Logs</h2>
+            <h2>Transactions</h2>
             <table id="logTable" class="table table-striped" data-order='[[ 1, "desc" ]]'>
                 <thead>
                 <tr>
-                    <th>Identifier</th>
+                    <!--<th>Identifier</th>-->
                     <th>Timestamp</th>
-                    <th>Response?</th>
                     <th>Status</th>
                     <th>Method</th>
                     <th>Endpoint</th>
+                    <th>Client IP</th>
+                    <th>Handler</th>
                     <th>Body</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="request : ${requests}">
-                    <td th:text="${request.id}">Request ID</td>
+                    <!--<td th:text="${request.id}">Request ID</td>-->
                     <td th:text="${request.timeStamp}">Timestamp</td>
-                    <td th:text="${request.response}">Response?</td>
                     <td th:text="${request.httpCode}">Status</td>
                     <td th:text="${request.method}">Method</td>
                     <td th:text="${request.endpoint}">Endpoint</td>
-                    <!--<td th:text="${request.body}">Body</td>-->
+                    <td th:text="${request.clientIp}">Client IP</td>
+                    <!--<td th:text="${request.javaMethod}">Handler</td>-->
                     <td>
-                        <button th:if="${request.body != null}" type="button" class="btn btn-info" data-toggle="modal" th:attr="data-target=${'#' + request.id}">Open Content</button>
-                        <button th:if="${request.body == null}" type="button" class="btn btn-info disabled">No Content</button>
+                        <button th:classappend="${request.javaMethod == null} ? disabled"
+                                type="button" class="btn btn-info" data-toggle="modal" th:attr="data-target=${'#' + request.id} + '-handler'">View Handler</button>
+                    </td>
+                    <td>
+                        <button th:classappend="${request.requestBody == '[unknown]' && request.responseBody == '[unknown]'} ? disabled"
+                                type="button" class="btn btn-info" data-toggle="modal" th:attr="data-target=${'#' + request.id}">View Bodies</button>
                     </td>
                 </tr>
                 </tbody>
@@ -87,15 +92,41 @@
     </div>
 </div>
 
-<div th:each="request : ${requests}" th:if="${request.body != null}" th:id="${request.id}" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+<div th:each="request : ${requests}" th:id="${request.id}" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 th:text="${request.id}" class="modal-title"></h4>
+                <h4 th:text="${'Transaction ' + request.id + ' bodies'}" class="modal-title"></h4>
             </div>
             <div class="modal-body">
-                <pre class=".body-container" th:text="${request.body}"></pre>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5>Request</h5>
+                        <pre class=".body-container" th:text="${request.requestBody}"></pre>
+                    </div>
+                    <div class="col-sm-6">
+                        <h5>Response</h5>
+                        <pre class=".body-container" th:text="${request.responseBody}"></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-alert" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:each="request : ${requests}" th:id="${request.id} + '-handler'" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 th:text="${'Transaction ' + request.id + ' handler'}" class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <pre class=".body-container" th:text="${request.javaMethod}"></pre>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-alert" data-dismiss="modal">Close</button>
@@ -116,8 +147,12 @@
 
         $('pre').each(function(i, el) {
             var content = $(el).text();
-            content = JSON.parse(content);
-            content = JSON.stringify(content, null, '\t');
+            try {
+                content = JSON.parse(content);
+                content = JSON.stringify(content, null, '\t');
+            } catch (e) {
+
+            }
             $(el).text(content);
         })
     });

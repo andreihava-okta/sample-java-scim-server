@@ -36,13 +36,4 @@ public interface RequestDatabase extends JpaRepository<Request, Long> {
      * @return The instance of {@link Request} found
      */
     List<Request> findById(String id);
-
-    /**
-     * Searches and returns all instances of {@link Request} that match the value condition of is response
-     * @param value The value of the condition
-     * @param pagable A pageable object, usually a {@link org.springframework.data.domain.PageRequest}
-     * @return A {@link Page} object with the found {@link Request} instances
-     */
-    @Query("SELECT r FROM Request r WHERE r.response = :value")
-    Page<Request> findByResponse(@Param("value") Boolean value, Pageable pagable);
 }

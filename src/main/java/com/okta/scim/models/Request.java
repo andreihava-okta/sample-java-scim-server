@@ -19,7 +19,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Database schema for {@link Request}
@@ -35,6 +38,16 @@ public class Request extends BaseModel {
     @Id
     public String id;
 
+    public Request setId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public Request generateId() {
+        this.id = UUID.randomUUID().toString();
+        return this;
+    }
+
     /**
      * The timestamp of the request, in UTC
      * Non-nullable
@@ -42,12 +55,15 @@ public class Request extends BaseModel {
     @Column(nullable = false)
     public String timeStamp;
 
-    /**
-     * True for response FROM SCIM server, False for request TO SCIM server
-     * Default: false
-     */
-    @Column(columnDefinition = "boolean default false")
-    public Boolean response = false;
+    public Request setTimestamp() {
+        this.timeStamp = LocalDateTime.now(Clock.systemUTC()).toString().substring(0, 23) + "Z";
+        return this;
+    }
+
+    public Request setTimestamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+        return this;
+    }
 
     /**
      * If response is True, shows the returned HTTP Status Code
@@ -56,12 +72,22 @@ public class Request extends BaseModel {
     @Column
     public int httpCode = 200;
 
+    public Request setHttpCode(int httpCode) {
+        this.httpCode = httpCode;
+        return this;
+    }
+
     /**
      * The method of the request
      * Max length: 20
      */
     @Column(length = 20)
     public String method;
+
+    public Request setMethod(String method) {
+        this.method = method;
+        return this;
+    }
 
     /**
      * The endpoint of the request
@@ -70,12 +96,50 @@ public class Request extends BaseModel {
     @Column(length = 250)
     public String endpoint;
 
+    public Request setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
+        return this;
+    }
+
     /**
      * The body of the request
-     * Max length: 250
+     * Max length: 1000
      */
     @Column(length = 1000)
-    public String body;
+    public String requestBody;
+
+    public Request setRequestBody(String requestBody) {
+        this.requestBody = requestBody;
+        return this;
+    }
+
+    /**
+     * The body of the response
+     * Max length: 1000
+     */
+    @Column(length = 1000)
+    public String responseBody;
+
+    public Request setResponseBody(String responseBody) {
+        this.responseBody = responseBody;
+        return this;
+    }
+
+    @Column(length = 30)
+    public String clientIp;
+
+    public Request setClientIp(String clientIp) {
+        this.clientIp = clientIp;
+        return this;
+    }
+
+    @Column(length = 300)
+    public String javaMethod;
+
+    public Request setJavaMethod(String javaMethod) {
+        this.javaMethod = javaMethod;
+        return this;
+    }
 
     public Request() {}
 
@@ -88,14 +152,13 @@ public class Request extends BaseModel {
      * @param resource JSON {@link Map} of {@link Request}
      */
     public void update(Map<String, Object> resource) {
-        try {
-            this.id = resource.get("id").toString();
-            this.timeStamp = resource.get("timeStamp").toString();
-            this.method = resource.get("method").toString();
-            this.endpoint = resource.get("endpoint").toString();
-            this.body = resource.get("body").toString();
-        } catch(Exception e) {
-            System.out.println(e);
-        }
+//        try {
+//            this.id = resource.get("id").toString();
+//            this.timeStamp = resource.get("timeStamp").toString();
+//            this.method = resource.get("method").toString();
+//            this.endpoint = resource.get("endpoint").toString();
+//        } catch(Exception e) {
+//            System.out.println(e);
+//        }
     }
 }

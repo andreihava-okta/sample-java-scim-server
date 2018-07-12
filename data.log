@@ -3,8 +3,8 @@ drop table groups if exists
 drop table requests if exists
 drop table users if exists
 create table groups (id varchar(36) not null, display_name varchar(250) not null, primary key (id))
-create table requests (id varchar(36) not null, body varchar(1000), endpoint varchar(250), http_code integer, method varchar(20), response boolean default false, time_stamp varchar(255) not null, primary key (id))
+create table requests (id varchar(36) not null, client_ip varchar(30), endpoint varchar(250), http_code integer, java_method varchar(300), method varchar(20), request_body varchar(1000), response_body varchar(1000), time_stamp varchar(255) not null, primary key (id))
 create table users (id varchar(36) not null, active boolean default false, family_name varchar(250), given_name varchar(250), middle_name varchar(250), user_name varchar(250) not null, primary key (id))
 alter table users add constraint UK_k8d0f2n7n88w1a16yhua64onx unique (user_name)
-INSERT INTO REQUESTS VALUES('5caabb74-8fc0-42c7-9a1a-3625e41f91ae','{"totalResults":0,"startIndex":0,"itemsPerPage":100,"schemas":["urn:ietf:params:scim:api:messages:2.0:ListResponse"],"Resources":[]}','/scim/v2/Users',200,'GET',TRUE,'2018-07-11T13:21:53.274Z')
+INSERT INTO REQUESTS VALUES('f54ecd6b-af08-419c-89dc-bcacb7351292','0:0:0:0:0:0:0:1','/scim/v2/Groups',200,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.GroupsController.groupsGet()] and 3 interceptors','GET','[unknown]','{"totalResults":0,"startIndex":1,"schemas":["urn:ietf:params:scim:api:messages:2.0:ListResponse"],"Resources":[]}','2018-07-12T07:53:23.243Z')
 COMMIT
