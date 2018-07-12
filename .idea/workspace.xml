@@ -2,20 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d43d731-02c3-445c-8615-d11924f61190" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/MvcConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/database/RequestDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/interceptors/RequestInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/jquery/external/jquery/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/jquery/external/jquery/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/jquery/jquery-1.10.2.js" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/jquery/jquery-1.10.2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.lck" beforeDir="false" afterPath="$PROJECT_DIR$/data.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data.log" beforeDir="false" afterPath="$PROJECT_DIR$/data.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/GroupsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/GroupsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.properties" beforeDir="false" afterPath="$PROJECT_DIR$/data.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.script" beforeDir="false" afterPath="$PROJECT_DIR$/data.script" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/database/DatabaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/database/DatabaseConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/database/RequestDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/database/TransactionDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/dispatchers/LoggingDispatcherServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/dispatchers/LoggingDispatcherServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Transaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
+      <file leaf-file-name="RequestInterceptor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/interceptors/RequestInterceptor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="120" column="25" selection-start-line="120" selection-start-column="14" selection-end-line="120" selection-end-column="25" />
+            <state relative-caret-position="221">
+              <caret line="22" column="138" selection-start-line="22" selection-start-column="138" selection-end-line="22" selection-end-column="138" />
             </state>
           </provider>
         </entry>
@@ -86,23 +84,24 @@
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/utils/StringUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/advice/LoggingAdvice.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/interceptors/LoggingInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/MvcConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/advice/LoggingRequestAdvice.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/advice/LoggingResponseAdvice.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/database/RequestDatabase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/Application.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/GroupsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleUserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/database/DatabaseConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/dispatchers/LoggingDispatcherServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Request.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Transaction.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/database/TransactionDatabase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Request.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/database/RequestDatabase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/MvcConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Transaction.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/dispatchers/LoggingDispatcherServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/interceptors/RequestInterceptor.java" />
       </list>
     </option>
   </component>
@@ -175,7 +174,16 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="scim" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="dispatchers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sample-java-scim-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sample-java-scim-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="scim" type="462c0819:PsiDirectoryNode" />
+              <item name="interceptors" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sample-java-scim-server" type="b2602c69:ProjectViewProjectNode" />
@@ -213,6 +221,7 @@
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.okta.scim.database" />
+      <recent name="com.okta.scim.models" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -287,12 +296,12 @@
       <option name="presentableId" value="Default" />
       <updated>1531288221917</updated>
       <workItem from="1531288223657" duration="21208000" />
-      <workItem from="1531379083694" duration="5330000" />
+      <workItem from="1531379083694" duration="8250000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26538000" />
+    <option name="totallyTimeSpent" value="29458000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -308,7 +317,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3191721" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3191721" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32897604" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
@@ -319,7 +328,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32897604" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19349681" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19349681" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
@@ -353,20 +362,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/advice/LoggingRequestAdvice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/advice/LoggingResponseAdvice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="59" column="76" selection-start-line="59" selection-start-column="76" selection-end-line="59" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/interceptors/LoggingInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -596,46 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="192" column="4" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;field#id#0;class#Request#0" />
-            <element signature="docComment;method#setId#0;class#Request#0" />
-            <element signature="method#setId#0;class#Request#0" />
-            <element signature="docComment;method#generateId#0;class#Request#0" />
-            <element signature="method#generateId#0;class#Request#0" />
-            <element signature="docComment;field#timeStamp#0;class#Request#0" />
-            <element signature="docComment;method#setTimestamp#0;class#Request#0" />
-            <element signature="method#setTimestamp#0;class#Request#0" />
-            <element signature="docComment;method#setTimestamp#1;class#Request#0" />
-            <element signature="method#setTimestamp#1;class#Request#0" />
-            <element signature="docComment;field#httpCode#0;class#Request#0" />
-            <element signature="docComment;method#setHttpCode#0;class#Request#0" />
-            <element signature="method#setHttpCode#0;class#Request#0" />
-            <element signature="docComment;field#method#0;class#Request#0" />
-            <element signature="docComment;method#setMethod#0;class#Request#0" />
-            <element signature="method#setMethod#0;class#Request#0" />
-            <element signature="docComment;field#endpoint#0;class#Request#0" />
-            <element signature="docComment;method#setEndpoint#0;class#Request#0" />
-            <element signature="method#setEndpoint#0;class#Request#0" />
-            <element signature="docComment;field#requestBody#0;class#Request#0" />
-            <element signature="docComment;method#setRequestBody#0;class#Request#0" />
-            <element signature="method#setRequestBody#0;class#Request#0" />
-            <element signature="docComment;field#responseBody#0;class#Request#0" />
-            <element signature="docComment;method#setResponseBody#0;class#Request#0" />
-            <element signature="method#setResponseBody#0;class#Request#0" />
-            <element signature="docComment;field#clientIp#0;class#Request#0" />
-            <element signature="docComment;method#setClientIp#0;class#Request#0" />
-            <element signature="method#setClientIp#0;class#Request#0" />
-            <element signature="docComment;field#javaMethod#0;class#Request#0" />
-            <element signature="docComment;method#setJavaMethod#0;class#Request#0" />
-            <element signature="method#setJavaMethod#0;class#Request#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1530">
@@ -671,27 +626,88 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/dispatchers/LoggingDispatcherServlet.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.7.RELEASE/spring-webmvc-5.0.7.RELEASE.jar!/org/springframework/web/servlet/config/annotation/WebMvcConfigurerAdapter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="137" column="7" lean-forward="true" selection-start-line="137" selection-start-column="7" selection-end-line="137" selection-end-column="7" />
+        <state relative-caret-position="136">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/MvcConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#1149#1150#0" expanded="true" />
+            <element signature="e#1208#1209#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/database/RequestDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="29" column="39" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
+        <state relative-caret-position="407">
+          <caret line="71" column="49" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/Transaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="183" column="5" selection-start-line="183" selection-start-column="5" selection-end-line="183" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/Request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-187">
+          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
           <folding>
-            <element signature="method#HomeController#0;class#HomeController#0" />
+            <element signature="docComment;field#id#0;class#Request#0" />
+            <element signature="docComment;method#setId#0;class#Request#0" />
+            <element signature="method#setId#0;class#Request#0" />
+            <element signature="docComment;method#generateId#0;class#Request#0" />
+            <element signature="method#generateId#0;class#Request#0" />
+            <element signature="docComment;field#timeStamp#0;class#Request#0" />
+            <element signature="docComment;method#setTimestamp#0;class#Request#0" />
+            <element signature="method#setTimestamp#0;class#Request#0" />
+            <element signature="docComment;method#setTimestamp#1;class#Request#0" />
+            <element signature="method#setTimestamp#1;class#Request#0" />
+            <element signature="docComment;field#method#0;class#Request#0" />
+            <element signature="docComment;method#setMethod#0;class#Request#0" />
+            <element signature="method#setMethod#0;class#Request#0" />
+            <element signature="docComment;field#endpoint#0;class#Request#0" />
+            <element signature="docComment;method#setEndpoint#0;class#Request#0" />
+            <element signature="method#setEndpoint#0;class#Request#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="120" column="25" selection-start-line="120" selection-start-column="14" selection-end-line="120" selection-end-column="25" />
+        <state relative-caret-position="3281">
+          <caret line="193" column="24" selection-start-line="193" selection-start-column="24" selection-end-line="193" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/dispatchers/LoggingDispatcherServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="73" column="170" selection-start-line="73" selection-start-column="111" selection-end-line="73" selection-end-column="170" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/interceptors/RequestInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="22" column="138" selection-start-line="22" selection-start-column="138" selection-end-line="22" selection-end-column="138" />
         </state>
       </provider>
     </entry>

@@ -1,8 +1,30 @@
 /*C3*/SET SCHEMA PUBLIC
 drop table groups if exists
+drop table requests if exists
 drop table transactions if exists
 drop table users if exists
 create table groups (id varchar(36) not null, display_name varchar(250) not null, primary key (id))
-create table transactions (id varchar(36) not null, client_ip varchar(30), endpoint varchar(250), http_code integer, java_method varchar(300), method varchar(20), request_body varchar(1000), response_body varchar(1000), time_stamp varchar(255) not null, primary key (id))
+create table requests (id varchar(36) not null, endpoint varchar(250), method varchar(20), time_stamp varchar(255) not null, primary key (id))
+create table transactions (id varchar(36) not null, endpoint varchar(250), http_code integer, java_method varchar(300), method varchar(20), request_body varchar(1000), request_id varchar(36), response_body varchar(1000), time_stamp varchar(255) not null, primary key (id))
 create table users (id varchar(36) not null, active boolean default false, family_name varchar(250), given_name varchar(250), middle_name varchar(250), user_name varchar(250) not null, primary key (id))
 alter table users add constraint UK_k8d0f2n7n88w1a16yhua64onx unique (user_name)
+INSERT INTO REQUESTS VALUES('4d0802cf-92ee-4667-a51b-5376beab9901','/scim/v2/Groups',NULL,'2018-07-12T09:39:39.270Z')
+COMMIT
+INSERT INTO TRANSACTIONS VALUES('7e4adf67-4ece-47e8-ade3-ca23d7ed8773','/scim/v2/Groups',200,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.GroupsController.groupsGet()] and 4 interceptors','GET','[unknown]','4d0802cf-92ee-4667-a51b-5376beab9901','{"totalResults":0,"startIndex":1,"schemas":["urn:ietf:params:scim:api:messages:2.0:ListResponse"],"Resources":[]}','2018-07-12T09:39:39.390Z')
+COMMIT
+INSERT INTO REQUESTS VALUES('0c206099-df69-4e1f-aff0-659fa005229b','/',NULL,'2018-07-12T09:39:41.541Z')
+COMMIT
+INSERT INTO REQUESTS VALUES('263c7992-4edd-4390-9d60-ac1d7926226d','/',NULL,'2018-07-12T09:39:50.616Z')
+COMMIT
+INSERT INTO REQUESTS VALUES('4bb23b4c-4f78-4951-87d2-8810a8f8e453','/scim/v2/Users?filter=userName eq "test.user.a1@testing.org"&startIndex=1&count=100',NULL,'2018-07-12T09:39:59.473Z')
+COMMIT
+INSERT INTO TRANSACTIONS VALUES('56d7dbd5-ae35-4248-96f6-b4cbf0a0c0e5','/scim/v2/Users?filter=userName eq "test.user.a1@testing.org"&startIndex=1&count=100',200,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.UsersController.usersGet(java.util.Map<java.lang.String, java.lang.String>)] and 4 interceptors','GET','[unknown]','4bb23b4c-4f78-4951-87d2-8810a8f8e453','{"totalResults":0,"startIndex":0,"itemsPerPage":100,"schemas":["urn:ietf:params:scim:api:messages:2.0:ListResponse"],"Resources":[]}','2018-07-12T09:39:59.493Z')
+COMMIT
+INSERT INTO REQUESTS VALUES('ea8ee45b-7d34-4677-bd38-91b375df5924','/scim/v2/Users',NULL,'2018-07-12T09:39:59.681Z')
+COMMIT
+INSERT INTO USERS VALUES('34ff074c-5c79-4ac6-b851-03e704b4b26c',TRUE,'User A1','Test',NULL,'test.user.a1@testing.org')
+COMMIT
+INSERT INTO TRANSACTIONS VALUES('dcb118ef-077f-4254-9256-de1cb6fb226b','/scim/v2/Users',201,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.UsersController.usersPost(java.util.Map<java.lang.String, java.lang.Object>,javax.servlet.http.HttpServletResponse)] and 4 interceptors','POST','{"schemas":["urn:ietf:params:scim:schemas:core:2.0:User"],"userName":"test.user.a1@testing.org","name":{"givenName":"Test","familyName":"User A1"},"emails":[{"primary":true,"value":"test.user.a1@testing.org","type":"work"}],"displayName":"Test User A1","locale":"en-US","externalId":"00ue3wsh1boROHA400h7","groups":[],"password":"7tbgQ3KWDI2jq154","active":true}','ea8ee45b-7d34-4677-bd38-91b375df5924','{"meta":{"meta":"/scim/v2/Users/34ff074c-5c79-4ac6-b851-03e704b4b26c","resourceType":"User"},"schemas":["urn:ietf:params:scim:schemas:core:2.0:User"],"name":{"familyName":"User A1","givenName":"Test","middleName":null},"active":true,"id":"34ff074c-5c79-4ac6-b851-03e704b4b26c","userName":"test.user.a1@testing.org"}','2018-07-12T09:39:59.744Z')
+COMMIT
+INSERT INTO REQUESTS VALUES('6987697e-4cf5-4b9a-8701-6f19508f2359','/',NULL,'2018-07-12T09:40:33.348Z')
+COMMIT

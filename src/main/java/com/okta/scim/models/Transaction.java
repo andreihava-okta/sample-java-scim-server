@@ -56,6 +56,23 @@ public class Transaction extends BaseModel {
     }
 
     /**
+     * The original {@link Request} ID
+     * Max length: 36
+     */
+    @Column(length = 36)
+    public String requestId;
+
+    /**
+     * Set the transaction's original {@link Request} ID
+     * @param requestId The {@link Request} ID
+     * @return The {@link Transaction} instance
+     */
+    public Transaction setRequestId(String requestId) {
+        this.requestId = requestId;
+        return this;
+    }
+
+    /**
      * The timestamp of the transaction, in UTC
      * Non-nullable
      */
@@ -163,23 +180,6 @@ public class Transaction extends BaseModel {
      */
     public Transaction setResponseBody(String responseBody) {
         this.responseBody = responseBody;
-        return this;
-    }
-
-    /**
-     * The client IP
-     * Max length: 30
-     */
-    @Column(length = 30)
-    public String clientIp;
-
-    /**
-     * Set the client IP
-     * @param clientIp The client IP
-     * @return The {@link Transaction} instance
-     */
-    public Transaction setClientIp(String clientIp) {
-        this.clientIp = clientIp;
         return this;
     }
 

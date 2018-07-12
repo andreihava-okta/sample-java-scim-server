@@ -58,25 +58,21 @@
             <table id="logTable" class="table table-striped" data-order='[[ 1, "desc" ]]'>
                 <thead>
                 <tr>
-                    <!--<th>Identifier</th>-->
                     <th>Timestamp</th>
                     <th>Status</th>
                     <th>Method</th>
                     <th>Endpoint</th>
-                    <th>Client IP</th>
                     <th>Handler</th>
                     <th>Body</th>
+                    <th>Raw</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="transaction : ${transactions}">
-                    <!--<td th:text="${transaction.id}">Transaction ID</td>-->
                     <td th:text="${transaction.timeStamp}">Timestamp</td>
                     <td th:text="${transaction.httpCode}">Status</td>
                     <td th:text="${transaction.method}">Method</td>
                     <td th:text="${transaction.endpoint}">Endpoint</td>
-                    <td th:text="${transaction.clientIp}">Client IP</td>
-                    <!--<td th:text="${transaction.javaMethod}">Handler</td>-->
                     <td>
                         <button th:classappend="${transaction.javaMethod == null} ? disabled"
                                 type="button" class="btn btn-info" data-toggle="modal" th:attr="data-target=${'#' + transaction.id} + '-handler'">View Handler</button>
@@ -85,6 +81,28 @@
                         <button th:classappend="${transaction.requestBody == '[unknown]' && transaction.responseBody == '[unknown]'} ? disabled"
                                 type="button" class="btn btn-info" data-toggle="modal" th:attr="data-target=${'#' + transaction.id}">View Bodies</button>
                     </td>
+                    <td>
+                        <button type="button" class="btn btn-info" data-toggle="modal" th:attr="data-target=${'#' + transaction.id} + '-raw'">View Raw</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-12">
+            <h2>Requests</h2>
+            <table id="requestTable" class="table table-striped" data-order='[[ 1, "desc" ]]'>
+                <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="request : ${requests}">
+                    <td th:text="${request.timeStamp}">Timestamp</td>
+                    <td th:text="${request.method}">Method</td>
+                    <td th:text="${request.endpoint}">Endpoint</td>
                 </tr>
                 </tbody>
             </table>
@@ -135,6 +153,35 @@
     </div>
 </div>
 
+<div th:each="transaction : ${transactions}" th:id="${transaction.id} + '-raw'" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 th:text="${'Transaction ' + transaction.id + ' raw'}" class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <pre>
+<code th:text="${'> ID: ' + transaction.id}"></code>
+<code th:text="${'> Request ID: ' + transaction.requestId}"></code>
+<code th:text="${'> Timestamp: ' + transaction.timeStamp}"></code>
+<code th:text="${'> Method: ' + transaction.method}"></code>
+<code th:text="${'> Endpoint: ' + transaction.endpoint}"></code>
+<code th:text="${'> Response Code: ' + transaction.httpCode}"></code>
+<code th:text="${'> Handler: ' + transaction.javaMethod}"></code>
+<code th:text="${'> Request Body:'}"></code>
+<code th:text="${transaction.requestBody}"></code>
+<code th:text="${'> Response Body:'}"></code>
+<code th:text="${transaction.responseBody}"></code>
+                </pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-alert" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -144,6 +191,7 @@
         $('#userTable').DataTable();
         $('#groupTable').DataTable();
         $('#logTable').DataTable();
+        $('#requestTable').DataTable();
 
         $('pre').each(function(i, el) {
             var content = $(el).text();
@@ -154,7 +202,7 @@
 
             }
             $(el).text(content);
-        })
+        });
     });
 </script>
 

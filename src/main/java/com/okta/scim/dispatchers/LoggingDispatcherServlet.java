@@ -28,6 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 /**
  * Dispatch Servlet to log all transactions
@@ -64,17 +65,17 @@ public class LoggingDispatcherServlet extends DispatcherServlet {
      * @param responseToCache The transaction {@link HttpServletResponse}
      * @param handler The transaction {@link HandlerExecutionChain}
      */
-    private void log(HttpServletRequest requestToCache, HttpServletResponse responseToCache, HandlerExecutionChain handler) {
+    private void log(HttpServletRequest requestToCache, HttpServletResponse responseToCache, HandlerExecutionChain handler) throws UnsupportedEncodingException {
         Transaction req = new Transaction()
                 .generateId()
                 .setTimestamp()
                 .setMethod(requestToCache.getMethod())
                 .setHttpCode(responseToCache.getStatus())
-                .setEndpoint(requestToCache.getRequestURI())
-                .setClientIp(requestToCache.getRemoteAddr())
+                .setEndpoint(requestToCache.getRequestURI() + (requestToCache.getQueryString() != null ? "?" + URLDecoder.decode(requestToCache.getQueryString(), "UTF-8") : ""))
                 .setJavaMethod(handler.toString())
                 .setRequestBody(getRequestPayload(requestToCache))
-                .setResponseBody(getResponsePayload(responseToCache));
+                .setResponseBody(getResponsePayload(responseToCache))
+                .setRequestId(requestToCache.getAttribute("rid").toString());
 
         db.save(req);
     }
