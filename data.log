@@ -8,23 +8,43 @@ create table requests (id varchar(36) not null, endpoint varchar(250), method va
 create table transactions (id varchar(36) not null, endpoint varchar(250), http_code integer, java_method varchar(300), method varchar(20), request_body varchar(1000), request_id varchar(36), response_body varchar(1000), time_stamp varchar(255) not null, primary key (id))
 create table users (id varchar(36) not null, active boolean default false, family_name varchar(250), given_name varchar(250), middle_name varchar(250), user_name varchar(250) not null, primary key (id))
 alter table users add constraint UK_k8d0f2n7n88w1a16yhua64onx unique (user_name)
-INSERT INTO REQUESTS VALUES('4d0802cf-92ee-4667-a51b-5376beab9901','/scim/v2/Groups',NULL,'2018-07-12T09:39:39.270Z')
+INSERT INTO REQUESTS VALUES('cc2b8fc8-a6a1-4a83-bb66-81e88b962504','/scim/v2/Users?startIndex=1&count=2','GET','2018-07-30T09:09:08.164Z')
 COMMIT
-INSERT INTO TRANSACTIONS VALUES('7e4adf67-4ece-47e8-ade3-ca23d7ed8773','/scim/v2/Groups',200,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.GroupsController.groupsGet()] and 4 interceptors','GET','[unknown]','4d0802cf-92ee-4667-a51b-5376beab9901','{"totalResults":0,"startIndex":1,"schemas":["urn:ietf:params:scim:api:messages:2.0:ListResponse"],"Resources":[]}','2018-07-12T09:39:39.390Z')
+INSERT INTO TRANSACTIONS VALUES('8f3f824e-2439-47c6-bdef-d0e2995a2c2d','/scim/v2/Users?startIndex=1&count=2',200,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.UsersController.usersGet(java.util.Map<java.lang.String, java.lang.String>)] and 4 interceptors','GET','[unknown]','cc2b8fc8-a6a1-4a83-bb66-81e88b962504','{"totalResults":0,"startIndex":0,"itemsPerPage":2,"schemas":["urn:ietf:params:scim:api:messages:2.0:ListResponse"],"Resources":[]}','2018-07-30T09:09:08.376Z')
 COMMIT
-INSERT INTO REQUESTS VALUES('0c206099-df69-4e1f-aff0-659fa005229b','/',NULL,'2018-07-12T09:39:41.541Z')
+INSERT INTO REQUESTS VALUES('a32e9165-b76e-4cf3-8968-0c91654fb807','/scim/v2/Users?startIndex=1&count=2','GET','2018-07-30T09:09:10.614Z')
 COMMIT
-INSERT INTO REQUESTS VALUES('263c7992-4edd-4390-9d60-ac1d7926226d','/',NULL,'2018-07-12T09:39:50.616Z')
+INSERT INTO TRANSACTIONS VALUES('e42fa707-60b3-49d7-b572-b8640620dbd1','/scim/v2/Users?startIndex=1&count=2',200,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.UsersController.usersGet(java.util.Map<java.lang.String, java.lang.String>)] and 4 interceptors','GET','[unknown]','a32e9165-b76e-4cf3-8968-0c91654fb807','{"totalResults":0,"startIndex":0,"itemsPerPage":2,"schemas":["urn:ietf:params:scim:api:messages:2.0:ListResponse"],"Resources":[]}','2018-07-30T09:09:10.621Z')
 COMMIT
-INSERT INTO REQUESTS VALUES('4bb23b4c-4f78-4951-87d2-8810a8f8e453','/scim/v2/Users?filter=userName eq "test.user.a1@testing.org"&startIndex=1&count=100',NULL,'2018-07-12T09:39:59.473Z')
+INSERT INTO REQUESTS VALUES('00c862ed-365e-4e02-bba2-bcfc0f93acf6','/scim/v2/Groups?startIndex=1&count=100','GET','2018-07-30T09:09:11.239Z')
 COMMIT
-INSERT INTO TRANSACTIONS VALUES('56d7dbd5-ae35-4248-96f6-b4cbf0a0c0e5','/scim/v2/Users?filter=userName eq "test.user.a1@testing.org"&startIndex=1&count=100',200,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.UsersController.usersGet(java.util.Map<java.lang.String, java.lang.String>)] and 4 interceptors','GET','[unknown]','4bb23b4c-4f78-4951-87d2-8810a8f8e453','{"totalResults":0,"startIndex":0,"itemsPerPage":100,"schemas":["urn:ietf:params:scim:api:messages:2.0:ListResponse"],"Resources":[]}','2018-07-12T09:39:59.493Z')
+INSERT INTO TRANSACTIONS VALUES('eecdaef7-1a34-4fa6-9e27-2ca934976261','/scim/v2/Groups?startIndex=1&count=100',200,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.GroupsController.groupsGet(java.util.Map<java.lang.String, java.lang.String>)] and 4 interceptors','GET','[unknown]','00c862ed-365e-4e02-bba2-bcfc0f93acf6','{"totalResults":0,"startIndex":0,"itemsPerPage":100,"schemas":["urn:ietf:params:scim:api:messages:2.0:ListResponse"],"Resources":[]}','2018-07-30T09:09:11.246Z')
 COMMIT
-INSERT INTO REQUESTS VALUES('ea8ee45b-7d34-4677-bd38-91b375df5924','/scim/v2/Users',NULL,'2018-07-12T09:39:59.681Z')
+INSERT INTO REQUESTS VALUES('cb17736c-3c4c-433b-9a58-ab92f3c40aeb','/','GET','2018-07-30T09:09:19.916Z')
 COMMIT
-INSERT INTO USERS VALUES('34ff074c-5c79-4ac6-b851-03e704b4b26c',TRUE,'User A1','Test',NULL,'test.user.a1@testing.org')
+INSERT INTO REQUESTS VALUES('2abd31c7-e24b-47ea-a888-c8ac02d48250','/scim/v2/Groups','POST','2018-07-30T09:09:46.371Z')
 COMMIT
-INSERT INTO TRANSACTIONS VALUES('dcb118ef-077f-4254-9256-de1cb6fb226b','/scim/v2/Users',201,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.UsersController.usersPost(java.util.Map<java.lang.String, java.lang.Object>,javax.servlet.http.HttpServletResponse)] and 4 interceptors','POST','{"schemas":["urn:ietf:params:scim:schemas:core:2.0:User"],"userName":"test.user.a1@testing.org","name":{"givenName":"Test","familyName":"User A1"},"emails":[{"primary":true,"value":"test.user.a1@testing.org","type":"work"}],"displayName":"Test User A1","locale":"en-US","externalId":"00ue3wsh1boROHA400h7","groups":[],"password":"7tbgQ3KWDI2jq154","active":true}','ea8ee45b-7d34-4677-bd38-91b375df5924','{"meta":{"meta":"/scim/v2/Users/34ff074c-5c79-4ac6-b851-03e704b4b26c","resourceType":"User"},"schemas":["urn:ietf:params:scim:schemas:core:2.0:User"],"name":{"familyName":"User A1","givenName":"Test","middleName":null},"active":true,"id":"34ff074c-5c79-4ac6-b851-03e704b4b26c","userName":"test.user.a1@testing.org"}','2018-07-12T09:39:59.744Z')
+INSERT INTO GROUPS VALUES('d44d8702-d652-4900-bdb7-8c3a6b6ce1a7','Scim Test Group 1')
 COMMIT
-INSERT INTO REQUESTS VALUES('6987697e-4cf5-4b9a-8701-6f19508f2359','/',NULL,'2018-07-12T09:40:33.348Z')
+INSERT INTO TRANSACTIONS VALUES('fff3d0c0-44bb-4f78-8b92-a017a00557ee','/scim/v2/Groups',201,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.GroupsController.groupsPost(java.util.Map<java.lang.String, java.lang.Object>,javax.servlet.http.HttpServletResponse)] and 4 interceptors','POST','{"schemas":["urn:ietf:params:scim:schemas:core:2.0:Group"],"displayName":"Scim Test Group 1","members":[]}','2abd31c7-e24b-47ea-a888-c8ac02d48250','{"displayName":"Scim Test Group 1","meta":{"meta":"/scim/v2/Groups/d44d8702-d652-4900-bdb7-8c3a6b6ce1a7","resourceType":"Group"},"schemas":["urn:ietf:params:scim:schemas:core:2.0:Group"],"id":"d44d8702-d652-4900-bdb7-8c3a6b6ce1a7"}','2018-07-30T09:09:46.433Z')
+COMMIT
+INSERT INTO REQUESTS VALUES('f8cbb9e9-54e2-495c-8769-dc2b9732acf5','/','GET','2018-07-30T09:09:54.193Z')
+COMMIT
+INSERT INTO REQUESTS VALUES('27c0ff14-480d-4313-ae55-2eec0f7858de','/scim/v2/Groups/d44d8702-d652-4900-bdb7-8c3a6b6ce1a7','GET','2018-07-30T09:10:16.086Z')
+COMMIT
+INSERT INTO TRANSACTIONS VALUES('0bcdf129-0725-4a1c-b5e7-40846ac5c550','/scim/v2/Groups/d44d8702-d652-4900-bdb7-8c3a6b6ce1a7',200,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.SingleGroupController.singeGroupGet(java.lang.String,javax.servlet.http.HttpServletResponse)] and 4 interceptors','GET','[unknown]','27c0ff14-480d-4313-ae55-2eec0f7858de','{"displayName":"Scim Test Group 1","meta":{"meta":"/scim/v2/Groups/d44d8702-d652-4900-bdb7-8c3a6b6ce1a7","resourceType":"Group"},"schemas":["urn:ietf:params:scim:schemas:core:2.0:Group"],"id":"d44d8702-d652-4900-bdb7-8c3a6b6ce1a7"}','2018-07-30T09:10:16.129Z')
+COMMIT
+INSERT INTO REQUESTS VALUES('0c808e6e-949f-4c8c-867a-8eddb1264009','/error','DELETE','2018-07-30T09:10:16.317Z')
+COMMIT
+INSERT INTO REQUESTS VALUES('18453dba-f727-4731-817a-450d6e0b60c2','/','GET','2018-07-30T09:10:53.435Z')
+COMMIT
+INSERT INTO REQUESTS VALUES('d49bc9d4-0b85-4878-a7ff-fdfd536908e0','/scim/v2/Groups/d44d8702-d652-4900-bdb7-8c3a6b6ce1a7','GET','2018-07-30T09:11:23.810Z')
+COMMIT
+INSERT INTO TRANSACTIONS VALUES('1f9eaa5c-23c5-49c0-9bff-951a3fed42c6','/scim/v2/Groups/d44d8702-d652-4900-bdb7-8c3a6b6ce1a7',200,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.SingleGroupController.singeGroupGet(java.lang.String,javax.servlet.http.HttpServletResponse)] and 4 interceptors','GET','[unknown]','d49bc9d4-0b85-4878-a7ff-fdfd536908e0','{"displayName":"Scim Test Group 1","meta":{"meta":"/scim/v2/Groups/d44d8702-d652-4900-bdb7-8c3a6b6ce1a7","resourceType":"Group"},"schemas":["urn:ietf:params:scim:schemas:core:2.0:Group"],"id":"d44d8702-d652-4900-bdb7-8c3a6b6ce1a7"}','2018-07-30T09:11:23.817Z')
+COMMIT
+INSERT INTO REQUESTS VALUES('e8c91ac4-98a7-40c1-9cc0-a1436e6d4382','/scim/v2/Groups/d44d8702-d652-4900-bdb7-8c3a6b6ce1a7','PATCH','2018-07-30T09:11:23.986Z')
+COMMIT
+INSERT INTO TRANSACTIONS VALUES('9c1156a3-00f8-47d9-8e9f-fc1143f98a18','/scim/v2/Groups/d44d8702-d652-4900-bdb7-8c3a6b6ce1a7',200,'HandlerExecutionChain with handler [public java.util.Map com.okta.scim.controllers.SingleGroupController.singleGroupPatch(java.util.Map<java.lang.String, java.lang.Object>,java.lang.String)] and 4 interceptors','PATCH','{"schemas":["urn:ietf:params:scim:api:messages:2.0:PatchOp"],"Operations":[{"op":"replace","value":{"id":"d44d8702-d652-4900-bdb7-8c3a6b6ce1a7","displayName":"Scim Test Group 1"}}]}','e8c91ac4-98a7-40c1-9cc0-a1436e6d4382','{"displayName":"Scim Test Group 1","meta":{"meta":"/scim/v2/Groups/d44d8702-d652-4900-bdb7-8c3a6b6ce1a7","resourceType":"Group"},"schemas":["urn:ietf:params:scim:schemas:core:2.0:Group"],"id":"d44d8702-d652-4900-bdb7-8c3a6b6ce1a7"}','2018-07-30T09:11:24.001Z')
+COMMIT
+INSERT INTO REQUESTS VALUES('ccd6bdd5-ed07-4038-991e-da2e6aa4b7cd','/','GET','2018-07-30T09:11:28.735Z')
 COMMIT

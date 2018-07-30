@@ -21,6 +21,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.Clock;
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -116,4 +117,9 @@ public class Request extends BaseModel {
     }
 
     public Request() {}
+
+    @Override
+    public Map toScimResource() {
+        return null;
+    }
 }

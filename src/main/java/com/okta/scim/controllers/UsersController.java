@@ -103,7 +103,7 @@ public class UsersController {
         int totalResults = foundUsers.size();
 
         // Convert optional values into Optionals for ListResponse Constructor
-        ListResponse returnValue = new ListResponse(foundUsers, Optional.of(startIndex),
+        ListResponse<User> returnValue = new ListResponse<>(foundUsers, Optional.of(startIndex),
                                         Optional.of(count), Optional.of(totalResults));
         return returnValue.toScimResource();
     }

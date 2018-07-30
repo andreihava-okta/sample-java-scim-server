@@ -58,8 +58,7 @@ public class Group extends BaseModel {
      */
     public void update(Map<String, Object> resource) {
         try{
-            Map<String, Object> names = (Map<String, Object>)resource.get("name");
-            this.displayName = resource.get("userName").toString();
+            this.displayName = resource.get("displayName").toString();
         } catch(Exception e) {
             System.out.println(e);
         }
@@ -69,6 +68,7 @@ public class Group extends BaseModel {
      * Formats JSON {@link Map} response with {@link Group} attributes.
      * @return JSON {@link Map} of {@link Group}
      */
+    @Override
     public Map toScimResource(){
         Map<String, Object> returnValue = new HashMap<>();
         List<String> schemas = new ArrayList<>();

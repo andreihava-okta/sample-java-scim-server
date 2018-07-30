@@ -45,5 +45,5 @@ public interface GroupDatabase extends JpaRepository<Group, Long> {
      * @return A {@link Page} object with the found {@link Group} instances
      */
     @Query("SELECT g FROM Group g WHERE g.displayName = :name")
-    Page<User> findByDisplayname(@Param("name") String name, Pageable pagable);
+    Page<Group> findByDisplayname(@Param("name") String name, Pageable pagable);
 }

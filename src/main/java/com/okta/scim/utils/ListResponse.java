@@ -15,6 +15,7 @@
 
 package com.okta.scim.utils;
 
+import com.okta.scim.models.BaseModel;
 import com.okta.scim.models.User;
 
 import java.util.List;
@@ -27,8 +28,8 @@ import java.util.stream.Collectors;
 /**
  * Returns an array of SCIM resources into a Query Resource
  */
-public class ListResponse {
-    private List<User> list;
+public class ListResponse<T extends BaseModel> {
+    private List<T> list;
     private int startIndex;
     private int count;
     private int totalResults;
@@ -39,8 +40,9 @@ public class ListResponse {
         this.count = 0;
         this.totalResults = 0;
     }
-    public ListResponse(List<User> list, Optional<Integer> startIndex,
-                 Optional<Integer> count, Optional<Integer> totalResults){
+
+    public ListResponse(List<T> list, Optional<Integer> startIndex,
+                        Optional<Integer> count, Optional<Integer> totalResults){
         this.list = list;
 
         // startIndex.orElse checks for optional values
@@ -61,7 +63,7 @@ public class ListResponse {
         returnValue.put("totalResults", this.totalResults);
         returnValue.put("startIndex", this.startIndex);
 
-        List<Map> resources = this.list.stream().map(User::toScimResource).collect(Collectors.toList());
+        List<Map> resources = this.list.stream().map(T::toScimResource).collect(Collectors.toList());
 
         if(this.count != 0) {
             returnValue.put("itemsPerPage", this.count);

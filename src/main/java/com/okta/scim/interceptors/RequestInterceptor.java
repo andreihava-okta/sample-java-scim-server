@@ -24,6 +24,7 @@ public class RequestInterceptor implements HandlerInterceptor {
         Request req = new Request()
                 .generateId()
                 .setTimestamp()
+                .setMethod(request.getMethod())
                 .setEndpoint(request.getRequestURI() + (request.getQueryString() != null ? "?" + URLDecoder.decode(request.getQueryString(), "UTF-8") : ""));
 
         request.setAttribute("rid", req.id);

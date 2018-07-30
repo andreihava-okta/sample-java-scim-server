@@ -65,7 +65,6 @@ public class HomeController {
         List<Group> groups = gDp.findAll();
         List<Transaction> transactions = tDp.findAll();
         List<Request> requests = rDp.findAll();
-        users.stream().filter(user -> !user.active).forEach(users::remove);
         model.addAttribute("users", users);
         model.addAttribute("groups", groups);
         model.addAttribute("transactions", transactions);

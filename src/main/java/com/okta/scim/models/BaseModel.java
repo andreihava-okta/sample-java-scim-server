@@ -15,7 +15,11 @@
 
 package com.okta.scim.models;
 
+import java.util.Map;
+
 /**
  * The base schema for models
  */
-public class BaseModel { }
+public abstract class BaseModel {
+    public abstract Map toScimResource();
+}

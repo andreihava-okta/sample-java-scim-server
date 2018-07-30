@@ -114,6 +114,7 @@ public class User extends BaseModel {
      * Formats JSON {@link Map} response with {@link User} attributes
      * @return JSON {@link Map} of {@link User}
      */
+    @Override
     public Map toScimResource(){
         Map<String, Object> returnValue = new HashMap<>();
         List<String> schemas = new ArrayList<>();

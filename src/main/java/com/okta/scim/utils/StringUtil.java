@@ -15,6 +15,9 @@
 
 package com.okta.scim.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -22,6 +25,8 @@ import java.io.IOException;
  * Utility class for {@link String} operations
  */
 public class StringUtil {
+    private static Logger logger = LoggerFactory.getLogger(StringUtil.class);
+
     /**
      * Converts a {@link BufferedReader} to a {@link String}
      * @param reader The {@link BufferedReader} to convert
@@ -38,13 +43,13 @@ public class StringUtil {
                 sb.append(charBuffer, 0, bytesRead);
             }
         } catch(IOException e) {
-            System.out.println(e);
+            logger.error(e.getMessage(), e);
         } finally {
             if (reader != null) {
                 try {
                     reader.close();
                 } catch(IOException e) {
-                    System.out.println(e);
+                    logger.error(e.getMessage(), e);
                 }
             }
         }

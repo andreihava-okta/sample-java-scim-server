@@ -17,6 +17,8 @@ package com.okta.scim.dispatchers;
 
 import com.okta.scim.database.TransactionDatabase;
 import com.okta.scim.models.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.HandlerExecutionChain;
@@ -36,6 +38,8 @@ import java.net.URLDecoder;
 public class LoggingDispatcherServlet extends DispatcherServlet {
     @Autowired
     TransactionDatabase db;
+
+    private Logger logger = LoggerFactory.getLogger(LoggingDispatcherServlet.class);
 
     @Override
     protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -98,7 +102,7 @@ public class LoggingDispatcherServlet extends DispatcherServlet {
                 try {
                     return new String(buf, 0, length, wrapper.getCharacterEncoding());
                 } catch (UnsupportedEncodingException e) {
-                    System.out.println(e);
+                    logger.error(e.getMessage(), e);
                 }
             }
         }
@@ -124,7 +128,7 @@ public class LoggingDispatcherServlet extends DispatcherServlet {
                 try {
                     return new String(buf, 0, length, wrapper.getCharacterEncoding());
                 } catch (UnsupportedEncodingException e) {
-                    System.out.println(e);
+                    logger.error(e.getMessage(), e);
                 }
             }
         }
@@ -139,6 +143,10 @@ public class LoggingDispatcherServlet extends DispatcherServlet {
      */
     private void updateResponse(HttpServletResponse response) throws IOException {
         ContentCachingResponseWrapper wrapper = WebUtils.getNativeResponse(response, ContentCachingResponseWrapper.class);
-        wrapper.copyBodyToResponse();
+        try {
+            wrapper.copyBodyToResponse();
+        } catch (NullPointerException e) {
+            logger.error(e.getMessage(), e);
+        }
     }
 }
