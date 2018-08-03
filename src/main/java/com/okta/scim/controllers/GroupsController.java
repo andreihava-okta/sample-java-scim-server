@@ -16,7 +16,9 @@
 package com.okta.scim.controllers;
 
 import com.okta.scim.database.GroupDatabase;
+import com.okta.scim.database.GroupMembershipDatabase;
 import com.okta.scim.models.Group;
+import com.okta.scim.models.GroupMembership;
 import com.okta.scim.utils.ListResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,10 +27,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -39,10 +38,12 @@ import java.util.regex.Pattern;
 @RequestMapping("/scim/v2/Groups")
 public class GroupsController {
     GroupDatabase db;
+    GroupMembershipDatabase gmDb;
 
     @Autowired
-    public GroupsController(GroupDatabase db) {
+    public GroupsController(GroupDatabase db, GroupMembershipDatabase gmDb) {
         this.db = db;
+        this.gmDb = gmDb;
     }
 
     /**
@@ -98,7 +99,33 @@ public class GroupsController {
         // Convert optional values into Optionals for ListResponse Constructor
         ListResponse<Group> returnValue = new ListResponse<>(foundGroups, Optional.of(startIndex),
                 Optional.of(count), Optional.of(totalResults));
-        return returnValue.toScimResource();
+        HashMap<String, Object> res = returnValue.toScimResource();
+        ArrayList<HashMap<String, Object>> resG = (ArrayList) res.get("Resources");
+        ArrayList<HashMap<String, Object>> resGN = new ArrayList<>();
+
+        for (HashMap<String, Object> g: resG) {
+            PageRequest pReq = new PageRequest(0, Integer.MAX_VALUE);
+            Page<GroupMembership> pg = gmDb.findByGroupId(g.get("id").toString(), pReq);
+
+            if (!pg.hasContent()) {
+                continue;
+            }
+
+            List<GroupMembership> gmList = pg.getContent();
+            ArrayList<Map<String, Object>> gms = new ArrayList<>();
+
+            for (GroupMembership gm: gmList) {
+                gms.add(gm.toScimResource());
+            }
+
+            g.put("members", gms);
+            resGN.add(g);
+        }
+
+        res.remove("Resources");
+        res.put("Resources", resGN);
+
+        return res;
     }
 
     /**
@@ -110,9 +137,27 @@ public class GroupsController {
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody Map groupsPost(@RequestBody Map<String, Object> params, HttpServletResponse response){
         Group newGroup = new Group(params);
+
         newGroup.id = UUID.randomUUID().toString();
         db.save(newGroup);
+
+        HashMap<String, Object> res = newGroup.toScimResource();
+
+        if (params.containsKey("members")) {
+            ArrayList<Map<String, Object>> members = (ArrayList<Map<String, Object>>) params.get("members");
+
+            for(Map<String, Object> member: members) {
+                GroupMembership membership = new GroupMembership(member);
+                membership.id = UUID.randomUUID().toString();
+                membership.groupId = newGroup.id;
+
+                gmDb.save(membership);
+            }
+
+            res.put("members", members);
+        }
+
         response.setStatus(201);
-        return newGroup.toScimResource();
+        return res;
     }
 }

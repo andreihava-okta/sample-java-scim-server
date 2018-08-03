@@ -137,6 +137,14 @@ public class User extends BaseModel {
         meta.put("meta", ("/scim/v2/Users/" + this.id));
         returnValue.put("meta", meta);
 
+        List<Map<String, Object>> emails = new ArrayList<>();
+        Map<String, Object> primaryEmail = new HashMap<>();
+        primaryEmail.put("primary", true);
+        primaryEmail.put("value", userName);
+        primaryEmail.put("type", "work");
+        emails.add(primaryEmail);
+        returnValue.put("emails", emails);
+
         return returnValue;
     }
 }

@@ -19,17 +19,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
- * Database schema for {@link Group}
+ * Database schema for {@link GroupMembership}
  */
 @Entity
-@Table(name = "groups")
-public class Group extends BaseModel {
+@Table(name = "groupmemberships")
+public class GroupMembership extends BaseModel {
     /**
      * The unique identifier of the object
      * UUID4 following the RFC 7643 requirement
@@ -38,27 +36,29 @@ public class Group extends BaseModel {
     @Id
     public String id;
 
-    /**
-     * The display name of the group
-     * Non-nullable
-     * Max length: 250
-     */
-    @Column(nullable = false, length = 250)
-    public String displayName;
+    @Column(nullable = false, length = 36)
+    public String groupId;
 
-    public Group() {}
+    @Column(nullable = false, length = 36)
+    public String value;
 
-    public Group(Map<String, Object> resource){
+    @Column
+    public String display;
+
+    public GroupMembership() {}
+
+    public GroupMembership(Map<String, Object> resource){
         this.update(resource);
     }
 
     /**
-     * Updates {@link Group} object from JSON {@link Map}
-     * @param resource JSON {@link Map} of {@link Group}
+     * Updates {@link GroupMembership} object from JSON {@link Map}
+     * @param resource JSON {@link Map} of {@link GroupMembership}
      */
     public void update(Map<String, Object> resource) {
         try{
-            this.displayName = resource.get("displayName").toString();
+            this.value = resource.get("value").toString();
+            this.display = resource.get("display").toString();
         } catch(Exception e) {
             System.out.println(e);
         }
@@ -69,19 +69,11 @@ public class Group extends BaseModel {
      * @return JSON {@link Map} of {@link Group}
      */
     @Override
-    public HashMap<String, Object> toScimResource(){
-        HashMap<String, Object> returnValue = new HashMap<>();
-        List<String> schemas = new ArrayList<>();
-        schemas.add("urn:ietf:params:scim:schemas:core:2.0:Group");
-        returnValue.put("schemas", schemas);
-        returnValue.put("id", this.id);
-        returnValue.put("displayName", this.displayName);
+    public Map toScimResource(){
+        Map<String, Object> returnValue = new HashMap<>();
 
-        // Meta information
-        Map<String, Object> meta = new HashMap<>();
-        meta.put("resourceType", "Group");
-        meta.put("meta", ("/scim/v2/Groups/" + this.id));
-        returnValue.put("meta", meta);
+        returnValue.put("value", this.value);
+        returnValue.put("display", this.display);
 
         return returnValue;
     }

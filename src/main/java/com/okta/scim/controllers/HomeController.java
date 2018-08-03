@@ -15,14 +15,8 @@
 
 package com.okta.scim.controllers;
 
-import com.okta.scim.database.GroupDatabase;
-import com.okta.scim.database.RequestDatabase;
-import com.okta.scim.database.TransactionDatabase;
-import com.okta.scim.database.UserDatabase;
-import com.okta.scim.models.Group;
-import com.okta.scim.models.Request;
-import com.okta.scim.models.Transaction;
-import com.okta.scim.models.User;
+import com.okta.scim.database.*;
+import com.okta.scim.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -38,20 +32,23 @@ import java.util.List;
 @RequestMapping("/")
 public class HomeController {
     private UserDatabase uDb;
-    private GroupDatabase gDp;
-    private TransactionDatabase tDp;
-    private RequestDatabase rDp;
+    private GroupDatabase gDb;
+    private TransactionDatabase tDb;
+    private RequestDatabase rDb;
+    private GroupMembershipDatabase gmDb;
 
     @Autowired
     public HomeController(
             UserDatabase uDb,
             GroupDatabase gDb,
-            TransactionDatabase tDp,
-            RequestDatabase rDp) {
+            TransactionDatabase tDb,
+            RequestDatabase rDb,
+            GroupMembershipDatabase gmDb) {
         this.uDb = uDb;
-        this.gDp = gDb;
-        this.tDp = tDp;
-        this.rDp = rDp;
+        this.gDb = gDb;
+        this.tDb = tDb;
+        this.rDb = rDb;
+        this.gmDb = gmDb;
     }
 
     /**
@@ -62,13 +59,15 @@ public class HomeController {
     @RequestMapping(method = RequestMethod.GET)
     public String home(ModelMap model) {
         List<User> users = uDb.findAll();
-        List<Group> groups = gDp.findAll();
-        List<Transaction> transactions = tDp.findAll();
-        List<Request> requests = rDp.findAll();
+        List<Group> groups = gDb.findAll();
+        List<Transaction> transactions = tDb.findAll();
+        List<Request> requests = rDb.findAll();
+        List<GroupMembership> groupMemberships = gmDb.findAll();
         model.addAttribute("users", users);
         model.addAttribute("groups", groups);
         model.addAttribute("transactions", transactions);
         model.addAttribute("requests", requests);
+        model.addAttribute("groupMemberships", groupMemberships);
         return "home";
     }
 }

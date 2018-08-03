@@ -97,6 +97,12 @@ public class SingleUserController {
             return scimError("The 'schemas' type in this request is not supported.", Optional.of(501));
         }
 
+        int found = db.findById(id).size();
+
+        if (found == 0) {
+            return scimError("User '" + id + "' was not found.", Optional.of(404));
+        }
+
         //Find user for update
         User user = db.findById(id).get(0);
 

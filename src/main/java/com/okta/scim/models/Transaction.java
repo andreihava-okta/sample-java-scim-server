@@ -154,7 +154,7 @@ public class Transaction extends BaseModel {
      * The body of the request
      * Max length: 1000
      */
-    @Column(length = 1000)
+    @Column(length = Integer.MAX_VALUE)
     public String requestBody;
 
     /**
@@ -171,7 +171,7 @@ public class Transaction extends BaseModel {
      * The body of the response
      * Max length: 1000
      */
-    @Column(length = 1000)
+    @Column(length = Integer.MAX_VALUE)
     public String responseBody;
 
     /**

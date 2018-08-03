@@ -54,8 +54,8 @@ public class ListResponse<T extends BaseModel> {
     /**
      * @return JSON {@link Map} of {@link ListResponse} object
      */
-    public Map<String, Object> toScimResource(){
-        Map<String, Object> returnValue = new HashMap<>();
+    public HashMap<String, Object> toScimResource(){
+        HashMap<String, Object> returnValue = new HashMap<>();
 
         List<String> schemas = new ArrayList<>();
         schemas.add("urn:ietf:params:scim:api:messages:2.0:ListResponse");

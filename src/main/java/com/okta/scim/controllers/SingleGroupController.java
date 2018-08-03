@@ -1,9 +1,13 @@
 package com.okta.scim.controllers;
 
 import com.okta.scim.database.GroupDatabase;
+import com.okta.scim.database.GroupMembershipDatabase;
 import com.okta.scim.models.Group;
+import com.okta.scim.models.GroupMembership;
 import com.okta.scim.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +22,12 @@ import java.util.*;
 @RequestMapping("/scim/v2/Groups/{id}")
 public class SingleGroupController {
     GroupDatabase db;
+    GroupMembershipDatabase gmDb;
 
     @Autowired
-    public SingleGroupController(GroupDatabase db) {
+    public SingleGroupController(GroupDatabase db, GroupMembershipDatabase gmDb) {
         this.db = db;
+        this.gmDb = gmDb;
     }
 
     /**
@@ -37,8 +43,19 @@ public class SingleGroupController {
 
         try {
             Group group = db.findById(id).get(0);
-            return group.toScimResource();
+            HashMap res = group.toScimResource();
 
+            PageRequest pageRequest = new PageRequest(0, Integer.MAX_VALUE);
+            Page<GroupMembership> gmPage = gmDb.findByGroupId(id, pageRequest);
+            List<GroupMembership> gmList = gmPage.getContent();
+            ArrayList<Map<String, Object>> gmAL = new ArrayList<>();
+
+            for (GroupMembership gm: gmList) {
+                gmAL.add(gm.toScimResource());
+            }
+
+            res.put("members", gmAL);
+            return res;
         } catch (Exception e) {
             response.setStatus(404);
             return scimError("Group not found", Optional.of(404));
@@ -84,31 +101,75 @@ public class SingleGroupController {
             return scimError("The 'schemas' type in this request is not supported.", Optional.of(501));
         }
 
+        int found = db.findById(id).size();
+
+        if (found == 0) {
+            return scimError("Group '" + id + "' was not found.", Optional.of(404));
+        }
+
         //Find user for update
         Group group = db.findById(id).get(0);
 
+        HashMap res = group.toScimResource();
+
         for(Map map : operations){
-            if(map.get("op")==null && !map.get("op").equals("replace")){
+            if(map.get("op")==null){
                 continue;
             }
-            Map<String, Object> value = (Map)map.get("value");
 
-            // Use Java reflection to find and set User attribute
-            if(value != null) {
-                for (Map.Entry key : value.entrySet()) {
-                    try {
-                        Field field = group.getClass().getDeclaredField(key.getKey().toString());
-                        field.set(group, key.getValue());
-                    } catch (NoSuchFieldException | IllegalAccessException e) {
-                        // Error - Do not update field
+            if (map.get("op").equals("replace")) {
+                Map<String, Object> value = (Map) map.get("value");
+
+                // Use Java reflection to find and set User attribute
+                if (value != null) {
+                    for (Map.Entry key : value.entrySet()) {
+                        try {
+                            Field field = group.getClass().getDeclaredField(key.getKey().toString());
+                            field.set(group, key.getValue());
+                        } catch (NoSuchFieldException | IllegalAccessException e) {
+                            // Error - Do not update field
+                        }
                     }
+
+                    db.save(group);
+                }
+            } else if (map.get("op").equals("add")) {
+                if (!map.get("path").equals("members")) {
+                    continue;
                 }
 
-                db.save(group);
+                ArrayList<Map<String, Object>> value = (ArrayList) map.get("value");
+
+                if (value != null && !value.isEmpty()) {
+                    for (Map val: value) {
+                        PageRequest pageRequest = new PageRequest(0, Integer.MAX_VALUE);
+                        Page<GroupMembership> gmPage = gmDb.findByGroupIdAndValue(id, val.get("value").toString(), pageRequest);
+
+                        if (gmPage.hasContent()) {
+                            continue;
+                        }
+
+                        GroupMembership gm = new GroupMembership(val);
+                        gm.id = UUID.randomUUID().toString();
+                        gm.groupId = id;
+                        gmDb.save(gm);
+                    }
+                }
             }
         }
 
-        return group.toScimResource();
+        PageRequest pageRequest = new PageRequest(0, Integer.MAX_VALUE);
+        Page<GroupMembership> gms = gmDb.findByGroupId(id, pageRequest);
+        List<GroupMembership> gmList = gms.getContent();
+        ArrayList<Map<String, Object>> gmAL = new ArrayList<>();
+
+        for (GroupMembership gm: gmList) {
+            gmAL.add(gm.toScimResource());
+        }
+
+        res.put("members", gmAL);
+
+        return res;
     }
 
     /**
