@@ -62,16 +62,18 @@
                 <tr>
                     <th>Identifier</th>
                     <th>Group ID</th>
-                    <th>Value</th>
-                    <th>Display</th>
+                    <th>User ID</th>
+                    <th>Group Name</th>
+                    <th>User Name</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="gm : ${groupMemberships}">
                     <td th:text="${gm.id}">ID</td>
                     <td th:text="${gm.groupId}">Group ID</td>
-                    <td th:text="${gm.value}">Value</td>
-                    <td th:text="${gm.display}">Display</td>
+                    <td th:text="${gm.userId}">User ID</td>
+                    <td th:text="${gm.groupDisplay}">Group Name</td>
+                    <td th:text="${gm.userDisplay}">User Name</td>
                 </tr>
                 </tbody>
             </table>

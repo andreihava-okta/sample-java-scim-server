@@ -118,7 +118,7 @@ public class SingleGroupController {
             }
 
             if (map.get("op").equals("replace")) {
-                Map<String, Object> value = (Map) map.get("value");
+                Map<String, Object> value = (Map) map.get("userId");
 
                 // Use Java reflection to find and set User attribute
                 if (value != null) {
@@ -138,12 +138,12 @@ public class SingleGroupController {
                     continue;
                 }
 
-                ArrayList<Map<String, Object>> value = (ArrayList) map.get("value");
+                ArrayList<Map<String, Object>> value = (ArrayList) map.get("userId");
 
                 if (value != null && !value.isEmpty()) {
                     for (Map val: value) {
                         PageRequest pageRequest = new PageRequest(0, Integer.MAX_VALUE);
-                        Page<GroupMembership> gmPage = gmDb.findByGroupIdAndValue(id, val.get("value").toString(), pageRequest);
+                        Page<GroupMembership> gmPage = gmDb.findByGroupIdAndUserId(id, val.get("userId").toString(), pageRequest);
 
                         if (gmPage.hasContent()) {
                             continue;

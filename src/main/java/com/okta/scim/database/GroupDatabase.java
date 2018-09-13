@@ -39,8 +39,8 @@ public interface GroupDatabase extends JpaRepository<Group, Long> {
     List<Group> findById(String id);
 
     /**
-     * Searches and returns all instances of {@link Group} that match a given display name
-     * @param name The display name to search
+     * Searches and returns all instances of {@link Group} that match a given userDisplay name
+     * @param name The userDisplay name to search
      * @param pagable A pageable object, usually a {@link org.springframework.data.domain.PageRequest}
      * @return A {@link Page} object with the found {@link Group} instances
      */

@@ -46,13 +46,16 @@ public interface GroupMembershipDatabase extends JpaRepository<GroupMembership, 
     @Query("SELECT gm FROM GroupMembership gm WHERE gm.groupId = :groupId")
     Page<GroupMembership> findByGroupId(@Param("groupId") String groupId, Pageable pagable);
 
+    @Query("SELECT gm FROM GroupMembership gm WHERe gm.userId = :userId")
+    Page<GroupMembership> findByUserId(@Param("userId") String userId, Pageable pageable);
+
     /**
-     * Searches and returns all instances of {@link GroupMembership} that match a given group ID and value
+     * Searches and returns all instances of {@link GroupMembership} that match a given group ID and userId
      * @param groupId The group ID to search
-     * @param value The value to search
+     * @param userId The userId to search
      * @param pagable A pageable object, usually a {@link org.springframework.data.domain.PageRequest}
      * @return A {@link Page} object with the found {@link GroupMembership} instances
      */
-    @Query("SELECT gm FROM GroupMembership gm WHERE gm.groupId = :groupId AND gm.value = :value")
-    Page<GroupMembership> findByGroupIdAndValue(@Param("groupId") String groupId, @Param("value") String value, Pageable pagable);
+    @Query("SELECT gm FROM GroupMembership gm WHERE gm.groupId = :groupId AND gm.userId = :userId")
+    Page<GroupMembership> findByGroupIdAndUserId(@Param("groupId") String groupId, @Param("userId") String userId, Pageable pagable);
 }

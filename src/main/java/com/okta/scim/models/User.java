@@ -134,7 +134,7 @@ public class User extends BaseModel {
         // Meta information
         Map<String, Object> meta = new HashMap<>();
         meta.put("resourceType", "User");
-        meta.put("meta", ("/scim/v2/Users/" + this.id));
+        meta.put("location", ("/scim/v2/Users/" + this.id));
         returnValue.put("meta", meta);
 
         List<Map<String, Object>> emails = new ArrayList<>();

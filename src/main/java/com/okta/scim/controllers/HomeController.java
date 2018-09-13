@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 /**
- *  URL route (root)/ to display home page
+ *  URL route (root)/ to userDisplay home page
  */
 @Controller
 @RequestMapping("/")

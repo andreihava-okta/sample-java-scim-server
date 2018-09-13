@@ -56,6 +56,29 @@
             </table>
         </div>
         <div class="col-sm-12">
+            <h2>Group Memberships</h2>
+            <table id="groupMembershipsTable" class="table table-striped" data-order='[[ 1, "asc" ]]'>
+                <thead>
+                <tr>
+                    <th>Identifier</th>
+                    <th>Group ID</th>
+                    <th>User ID</th>
+                    <th>Group Name</th>
+                    <th>User Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="gm : ${groupMemberships}">
+                    <td th:text="${gm.id}">ID</td>
+                    <td th:text="${gm.groupId}">Group ID</td>
+                    <td th:text="${gm.userId}">User ID</td>
+                    <td th:text="${gm.groupDisplay}">Group Name</td>
+                    <td th:text="${gm.userDisplay}">User Name</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-12">
             <h2>Transactions</h2>
             <table id="logTable" class="table table-striped" data-order='[[ 0, "desc" ]]'>
                 <thead>
@@ -194,6 +217,7 @@
         $('#groupTable').DataTable();
         $('#logTable').DataTable();
         $('#requestTable').DataTable();
+        $('#groupMembershipsTable').DataTable();
 
         $('pre').each(function(i, el) {
             var content = $(el).text();

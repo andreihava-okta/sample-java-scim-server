@@ -15,7 +15,9 @@
 
 package com.okta.scim.controllers;
 
+import com.okta.scim.database.GroupMembershipDatabase;
 import com.okta.scim.database.UserDatabase;
+import com.okta.scim.models.GroupMembership;
 import com.okta.scim.models.User;
 import com.okta.scim.utils.ListResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +27,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,11 +37,13 @@ import java.util.regex.Pattern;
 @Controller
 @RequestMapping("/scim/v2/Users")
 public class UsersController {
-    UserDatabase db;
+    UserDatabase            db;
+    GroupMembershipDatabase gmDb;
 
     @Autowired
-    public UsersController(UserDatabase db) {
+    public UsersController(UserDatabase db, GroupMembershipDatabase gmDb) {
       this.db = db;
+      this.gmDb = gmDb;
     }
 
     /**
@@ -105,7 +106,34 @@ public class UsersController {
         // Convert optional values into Optionals for ListResponse Constructor
         ListResponse<User> returnValue = new ListResponse<>(foundUsers, Optional.of(startIndex),
                                         Optional.of(count), Optional.of(totalResults));
-        return returnValue.toScimResource();
+
+        HashMap<String, Object> res = returnValue.toScimResource();
+        ArrayList<HashMap<String, Object>> resG  = (ArrayList) res.get("Resources");
+        ArrayList<HashMap<String, Object>> resGN = new ArrayList<>();
+
+        for (HashMap<String, Object> u: resG) {
+            PageRequest           pReq = new PageRequest(0, Integer.MAX_VALUE);
+            Page<GroupMembership> pg   = gmDb.findByUserId(u.get("id").toString(), pReq);
+
+            if (!pg.hasContent()) {
+                continue;
+            }
+
+            List<GroupMembership> gmList = pg.getContent();
+            ArrayList<Map<String, Object>> gms = new ArrayList<>();
+
+            for (GroupMembership gm: gmList) {
+                gms.add(gm.toUserScimResource());
+            }
+
+            u.put("groups", gms);
+            resGN.add(u);
+        }
+
+        res.remove("Resources");
+        res.put("Resources", resGN);
+
+        return res;
     }
 
     /**

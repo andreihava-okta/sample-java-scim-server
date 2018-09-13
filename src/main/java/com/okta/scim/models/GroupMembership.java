@@ -40,10 +40,13 @@ public class GroupMembership extends BaseModel {
     public String groupId;
 
     @Column(nullable = false, length = 36)
-    public String value;
+    public String userId;
 
     @Column
-    public String display;
+    public String groupDisplay;
+
+    @Column
+    public String userDisplay;
 
     public GroupMembership() {}
 
@@ -57,8 +60,8 @@ public class GroupMembership extends BaseModel {
      */
     public void update(Map<String, Object> resource) {
         try{
-            this.value = resource.get("value").toString();
-            this.display = resource.get("display").toString();
+            this.userId = resource.get("value").toString();
+            this.userDisplay = resource.get("display").toString();
         } catch(Exception e) {
             System.out.println(e);
         }
@@ -72,8 +75,17 @@ public class GroupMembership extends BaseModel {
     public Map toScimResource(){
         Map<String, Object> returnValue = new HashMap<>();
 
-        returnValue.put("value", this.value);
-        returnValue.put("display", this.display);
+        returnValue.put("value", this.userId);
+        returnValue.put("display", this.userDisplay);
+
+        return returnValue;
+    }
+
+    public Map toUserScimResource() {
+        Map<String, Object> returnValue = new HashMap<>();
+
+        returnValue.put("value", this.groupId);
+        returnValue.put("display", this.groupDisplay);
 
         return returnValue;
     }

@@ -65,9 +65,14 @@ public class ListResponse<T extends BaseModel> {
 
         List<Map> resources = this.list.stream().map(T::toScimResource).collect(Collectors.toList());
 
-        if(this.count != 0) {
+        if (this.count > this.totalResults) {
+            this.count = this.totalResults;
+        }
+
+        if (this.count != 0) {
             returnValue.put("itemsPerPage", this.count);
         }
+
         returnValue.put("Resources", resources);
 
         return returnValue;

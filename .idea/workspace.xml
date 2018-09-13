@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d43d731-02c3-445c-8615-d11924f61190" name="Default" comment="Added groups">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/database/GroupMembershipDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/GroupMembership.java" afterDir="false" />
+    <list default="true" id="1d43d731-02c3-445c-8615-d11924f61190" name="Default" comment="Added group memberships">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/controllers/HomeController.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/com/okta/scim/controllers/HomeController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/database/class-use/GroupDatabase.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/com/okta/scim/database/class-use/GroupDatabase.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/database/class-use/TransactionDatabase.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/com/okta/scim/database/class-use/TransactionDatabase.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaDoc/com/okta/scim/database/class-use/UserDatabase.html" beforeDir="false" afterPath="$PROJECT_DIR$/JavaDoc/com/okta/scim/database/class-use/UserDatabase.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data.lck" beforeDir="false" afterPath="$PROJECT_DIR$/data.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data.log" beforeDir="false" afterPath="$PROJECT_DIR$/data.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data.properties" beforeDir="false" afterPath="$PROJECT_DIR$/data.properties" afterDir="false" />
@@ -17,11 +11,15 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleGroupController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/database/GroupDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/database/GroupDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/database/GroupMembershipDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/database/GroupMembershipDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/GroupMembership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/GroupMembership.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/okta/scim/utils/ListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/okta/scim/utils/ListResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,41 +35,42 @@
     <session id="1132338299">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="4" />
-          <entry key="html" value="2" />
-          <entry key="java" value="64" />
+          <entry key="html" value="3" />
+          <entry key="java" value="82" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="4" />
-          <entry key="HTML" value="2" />
-          <entry key="JAVA" value="64" />
+          <entry key="HTML" value="3" />
+          <entry key="JAVA" value="82" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="171" />
-          <entry key="java" value="4126" />
-          <entry key="txt" value="13" />
+          <entry key="html" value="237" />
+          <entry key="java" value="4662" />
+          <entry key="txt" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="171" />
-          <entry key="JAVA" value="4126" />
-          <entry key="PLAIN_TEXT" value="13" />
+          <entry key="HTML" value="237" />
+          <entry key="JAVA" value="4662" />
+          <entry key="PLAIN_TEXT" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -82,12 +81,12 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/GroupsController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="125" column="36" selection-start-line="125" selection-start-column="36" selection-end-line="125" selection-end-column="36" />
+            <state relative-caret-position="506">
+              <caret line="125" column="47" selection-start-line="125" selection-start-column="47" selection-end-line="125" selection-end-column="47" />
               <folding>
-                <element signature="method#GroupsController#0;class#GroupsController#0" />
+                <element signature="method#UsersController#0;class#UsersController#0" />
               </folding>
             </state>
           </provider>
@@ -130,7 +129,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/UsersController.java" />
         <option value="$PROJECT_DIR$/LICENSE.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/database/Database.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/database/UserDatabase.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/utils/BeanUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/interceptors/LoggingInterceptorContainer.java" />
@@ -151,19 +149,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/database/GroupDatabase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/BaseModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Request.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/GroupMembership.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Group.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/HomeController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleUserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Transaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/utils/ListResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Group.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/GroupMembership.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/GroupsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/database/GroupMembershipDatabase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleGroupController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/Transaction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/utils/ListResponse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/GroupsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/database/UserDatabase.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java" />
       </list>
     </option>
   </component>
@@ -192,9 +191,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -283,7 +282,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533292674385" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536837756276" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -354,7 +353,8 @@
       <workItem from="1533206717423" duration="1299000" />
       <workItem from="1533209888093" duration="4450000" />
       <workItem from="1533289138158" duration="114000" />
-      <workItem from="1533289316828" duration="3614000" />
+      <workItem from="1533289316828" duration="3786000" />
+      <workItem from="1536834839497" duration="2187000" />
     </task>
     <task id="LOCAL-00001" summary="Added groups">
       <created>1532942037385</created>
@@ -363,17 +363,24 @@
       <option name="project" value="LOCAL" />
       <updated>1532942037385</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added group memberships">
+      <created>1533292963938</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1533292963954</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46486000" />
+    <option name="totallyTimeSpent" value="48845000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20842217" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21055438" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -384,13 +391,13 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3286334" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.46420825" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.46420825" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.329718" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3286334" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
@@ -416,7 +423,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added groups" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added groups" />
+    <MESSAGE value="Added group memberships" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added group memberships" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -567,13 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="110" column="7" lean-forward="true" selection-start-line="110" selection-start-column="7" selection-end-line="110" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.2.Final/hibernate-jpa-2.1-api-1.0.2.Final.jar!/javax/persistence/Entity.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -609,24 +610,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/BaseModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/database/UserDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="49" column="27" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -644,56 +631,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/GroupMembership.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/Group.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="72" column="15" selection-start-line="72" selection-start-column="15" selection-end-line="72" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="69" column="65" selection-start-line="69" selection-start-column="65" selection-end-line="69" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.0.8.RELEASE/spring-data-commons-2.0.8.RELEASE.jar!/org/springframework/data/domain/PageRequest.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-          <folding>
-            <element signature="e#485#486#0" expanded="true" />
-            <element signature="e#534#535#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="60" column="23" lean-forward="true" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44">
-          <caret line="106" column="43" lean-forward="true" selection-start-line="106" selection-start-column="43" selection-end-line="106" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/database/GroupMembershipDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="50" column="44" lean-forward="true" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -718,36 +659,102 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/utils/ListResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="823">
+          <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="721">
+          <caret line="82" column="26" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="136" column="26" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/database/GroupMembershipDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/GroupsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-418">
+          <caret line="43" column="74" lean-forward="true" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="74" />
+          <folding>
+            <element signature="method#GroupsController#0;class#GroupsController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/database/UserDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="55" column="41" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="72" column="61" lean-forward="true" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-98">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1411">
+          <caret line="106" column="43" lean-forward="true" selection-start-line="106" selection-start-column="43" selection-end-line="106" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/SingleGroupController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="147" column="47" selection-start-line="147" selection-start-column="47" selection-end-line="147" selection-end-column="47" />
+        <state relative-caret-position="2023">
+          <caret line="150" lean-forward="true" selection-start-line="150" selection-end-line="150" />
           <folding>
             <element signature="method#SingleGroupController#0;class#SingleGroupController#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/models/GroupMembership.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="687">
-          <caret line="145" column="42" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
+        <state relative-caret-position="279">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/utils/ListResponse.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/UsersController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="70" column="31" selection-start-line="70" selection-start-column="31" selection-end-line="70" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/okta/scim/controllers/GroupsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="125" column="36" selection-start-line="125" selection-start-column="36" selection-end-line="125" selection-end-column="36" />
+        <state relative-caret-position="506">
+          <caret line="125" column="47" selection-start-line="125" selection-start-column="47" selection-end-line="125" selection-end-column="47" />
           <folding>
-            <element signature="method#GroupsController#0;class#GroupsController#0" />
+            <element signature="method#UsersController#0;class#UsersController#0" />
           </folding>
         </state>
       </provider>

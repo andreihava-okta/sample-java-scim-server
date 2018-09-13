@@ -39,7 +39,7 @@ public class Group extends BaseModel {
     public String id;
 
     /**
-     * The display name of the group
+     * The userDisplay name of the group
      * Non-nullable
      * Max length: 250
      */
@@ -80,7 +80,7 @@ public class Group extends BaseModel {
         // Meta information
         Map<String, Object> meta = new HashMap<>();
         meta.put("resourceType", "Group");
-        meta.put("meta", ("/scim/v2/Groups/" + this.id));
+        meta.put("location", ("/scim/v2/Groups/" + this.id));
         returnValue.put("meta", meta);
 
         return returnValue;

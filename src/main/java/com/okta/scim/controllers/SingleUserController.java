@@ -110,7 +110,7 @@ public class SingleUserController {
             if(map.get("op")==null && !map.get("op").equals("replace")){
                 continue;
             }
-            Map<String, Object> value = (Map)map.get("value");
+            Map<String, Object> value = (Map)map.get("userId");
 
             // Use Java reflection to find and set User attribute
             if(value != null) {

@@ -150,6 +150,7 @@ public class GroupsController {
                 GroupMembership membership = new GroupMembership(member);
                 membership.id = UUID.randomUUID().toString();
                 membership.groupId = newGroup.id;
+                membership.groupDisplay = newGroup.displayName;
 
                 gmDb.save(membership);
             }
